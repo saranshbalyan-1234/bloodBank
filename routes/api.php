@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\DonorsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +19,5 @@ use App\Http\Controllers\UsersController;
 
 Route::post('/login',[UsersController::class,'login']);
 Route::post('/register',[UsersController::class,'register']);
-// Route::post('/register',[UsersController::class,'test']);
+Route::post('/addDonor',[DonorsController::class,'addDonor']);
+Route::post('/requestDonor',[RequestDonorsController::class,'requestDonor']);
