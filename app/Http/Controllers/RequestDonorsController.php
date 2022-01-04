@@ -19,7 +19,8 @@ class RequestDonorsController extends Controller
         $request_donor->user_id=$req->user_id;
         $request_donor->unit=$req->unit;
         $request_donor->save();
-      return $request_donor;
+
+      return response()->json(['requestDonorData' => $request_donor,"status"=>"success"]);
         
     }
 }

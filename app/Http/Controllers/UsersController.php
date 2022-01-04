@@ -18,14 +18,17 @@ class UsersController extends Controller
             'password'=>'required',
             ]);
         if ($validator->fails()) {
-            return  response()->json([$validator->errors()]);
+            return response()->json(['errors' => $validator->errors(),"status"=>"failure"]);
+       
         } else {
         $user = new User;
         $user->name=$req->name;
         $user->email=$req->email;
         $user->password=Hash::make($req->password);
         $user->save();
-      return $user;
+
+        return response()->json(['registerData' => $user,"status"=>"success"]);
+
         }
     }
 
@@ -36,8 +39,8 @@ class UsersController extends Controller
             'password'=>'required',
             ]);
 
-    if ($validator->fails()) {
-        return response()->json([$validator->errors()]);
+    if ($validator->fails()) {            
+        return response()->json(['errors' => $validator->errors(),"status"=>"failure"]);
     } else {
         $user = DB::table('users')
             ->where(['email' => $req->email])
@@ -46,9 +49,10 @@ class UsersController extends Controller
                $check= Hash::check($req->password, $user->password);  
             }
     if($check){
-        return $user;
+        return response()->json(['loginData' => $user,"status"=>"success"]);
     } else {
-        return response()->json(['error' => 'invalid email or password']);
+        return response()->json(['error' => 'invalid email or password',"status"=>"failure"]);
+       
     }
   
 

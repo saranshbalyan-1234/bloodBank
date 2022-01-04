@@ -20,7 +20,7 @@ class DonorsController extends Controller
         $donor->type_rh=$req->type_rh;
         $donor->user_id=$req->user_id;
         $donor->save();
-      return $donor;
+        return response()->json(['addDonorData' => $donor,"status"=>"success"]);
         
     }
 }
