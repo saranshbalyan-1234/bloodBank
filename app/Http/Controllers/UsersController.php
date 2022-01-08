@@ -48,7 +48,7 @@ class UsersController extends Controller
             ->first();
 
             if($user){
-                $token=  $user->createToken('myapptoken')->plainTextToken; 
+                $token=  $user->createToken($user->name)->plainTextToken; 
                 $user->token=$token;
                $check= Hash::check($req->password, $user->password);  
             }
@@ -63,5 +63,11 @@ class UsersController extends Controller
 
 
 }
+    }
+
+    function logout(Request $req){
+        $req->user()->currentAccessToken()->delete();
+
+        return response()->json(['loginData' => "Successfully Logged Out","status"=>"success"],200);
     }
 }

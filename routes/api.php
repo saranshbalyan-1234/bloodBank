@@ -23,4 +23,5 @@ Route::post('/register',[UsersController::class,'register']);
 Route::group(['middleware'=>['auth:sanctum']],function () {
     Route::post('/addDonor',[DonorsController::class,'addDonor']);
     Route::post('/requestDonor',[RequestDonorsController::class,'requestDonor']);
+    Route::post('/logout',[UsersController::class,'logout']);
 });
