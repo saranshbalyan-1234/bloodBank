@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
+
 class UsersController extends Controller
 {
     function register(Request $req){
@@ -42,15 +43,19 @@ class UsersController extends Controller
     if ($validator->fails()) {            
         return response()->json(['errors' => $validator->errors(),"status"=>"failure"]);
     } else {
-        $user = DB::table('users')
-            ->where(['email' => $req->email])
+        $check=false;
+        $user = User::where(['email' => $req->email])
             ->first();
+
             if($user){
+                $token=  $user->createToken('myapptoken')->plainTextToken; 
+                $user->token=$token;
                $check= Hash::check($req->password, $user->password);  
             }
     if($check){
         return response()->json(['loginData' => $user,"status"=>"success"]);
     } else {
+
         return response()->json(['error' => 'invalid email or password',"status"=>"failure"]);
        
     }

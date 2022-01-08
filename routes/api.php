@@ -19,5 +19,8 @@ use App\Http\Controllers\DonorsController;
 
 Route::post('/login',[UsersController::class,'login']);
 Route::post('/register',[UsersController::class,'register']);
-Route::post('/addDonor',[DonorsController::class,'addDonor']);
-Route::post('/requestDonor',[RequestDonorsController::class,'requestDonor']);
+
+Route::group(['middleware'=>['auth:sanctum']],function () {
+    Route::post('/addDonor',[DonorsController::class,'addDonor']);
+    Route::post('/requestDonor',[RequestDonorsController::class,'requestDonor']);
+});
