@@ -43,6 +43,7 @@ class UsersController extends Controller
     if ($validator->fails()) {            
         return response()->json(['errors' => $validator->errors(),"status"=>"failure"]);
     } else {
+        
         $check=false;
         $user = User::where(['email' => $req->email])
             ->first();
@@ -52,22 +53,17 @@ class UsersController extends Controller
                 $user->token=$token;
                $check= Hash::check($req->password, $user->password);  
             }
-    if($check){
-        return response()->json(['loginData' => $user,"status"=>"success"]);
-    } else {
 
-        return response()->json(['error' => 'invalid email or password',"status"=>"failure"]);
-       
-    }
-  
-
-
-}
+            if($check){
+            return response()->json(['loginData' => $user,"status"=>"success"]);
+            } else {
+            return response()->json(['error' => 'invalid email or password',"status"=>"failure"]);
+            }
+        }
     }
 
     function logout(Request $req){
         $req->user()->currentAccessToken()->delete();
-
-        return response()->json(['loginData' => "Successfully Logged Out","status"=>"success"],200);
+        return response()->json(['loginData' => "Successfully Logged Out","status"=>"success"]);
     }
 }
