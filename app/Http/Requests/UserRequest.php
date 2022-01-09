@@ -42,9 +42,7 @@ class UserRequest extends FormRequest
                 'password'=>'required',
             ];
             break;
-           case 'rename':
-               // do something.
-               break;
+       
           default: return [];
         }       
     }

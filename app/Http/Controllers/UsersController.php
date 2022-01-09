@@ -23,8 +23,6 @@ class UsersController extends Controller
         $user->save();
 
         return response()->json(['registerData' => $user,"status"=>"success"]);
-
-        
     }
 
 
