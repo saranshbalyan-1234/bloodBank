@@ -5,23 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+
+use App\Http\Requests\UserRequest;
 
 
 class UsersController extends Controller
 {
-    function register(Request $req){
-        $validator = Validator::make($req->all(), [ 
-            'name'=>"required|regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
-            'email'=>'required|email|unique:users,email',
-            'password'=>'required',
-            ]);
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors(),"status"=>"failure"]);
-       
-        } else {
+    function register(UserRequest $req){
+     
         $user = new User;
         $user->name=$req->name;
         $user->email=$req->email;
@@ -30,19 +24,11 @@ class UsersController extends Controller
 
         return response()->json(['registerData' => $user,"status"=>"success"]);
 
-        }
+        
     }
 
 
-    function login(Request $req){
-        $validator = Validator::make($req->all(), [ 
-            'email'=>'required|email',
-            'password'=>'required',
-            ]);
-
-    if ($validator->fails()) {            
-        return response()->json(['errors' => $validator->errors(),"status"=>"failure"]);
-    } else {
+    function login(UserRequest $req){
         
         $check=false;
         $user = User::where(['email' => $req->email])
@@ -59,11 +45,11 @@ class UsersController extends Controller
             } else {
             return response()->json(['error' => 'invalid email or password',"status"=>"failure"]);
             }
-        }
+        
     }
 
     function logout(Request $req){
         $req->user()->currentAccessToken()->delete();
-        return response()->json(['loginData' => "Successfully Logged Out","status"=>"success"]);
+        return response()->json(['logoutData' => "Successfully Logged Out","status"=>"success"]);
     }
 }
