@@ -21,7 +21,11 @@ Route::post('/login',[UsersController::class,'login']);
 Route::post('/register',[UsersController::class,'register']);
 
 Route::group(['middleware'=>['auth:sanctum']],function () {
-    Route::post('/addDonor',[DonorsController::class,'addDonor']);
-    Route::post('/requestDonor',[RequestDonorsController::class,'requestDonor']);
+
+    Route::post('/getDonorById',[UsersController::class,'getDonorById']);
+    Route::post('/getAllDonors',[UsersController::class,'getAllDonors']);
+    Route::post('/getAllDonorsByState',[UsersController::class,'getAllDonorsByState']);
+    Route::post('/getAllDonorsByCity',[UsersController::class,'getAllDonorsByCity']);
     Route::post('/logout',[UsersController::class,'logout']);
+  
 });

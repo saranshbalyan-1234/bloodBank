@@ -15,13 +15,13 @@ class CreateDonorsTable extends Migration
     {
         Schema::create('donors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->integer('age');
             $table->string('address');
+            $table->string('city');
+            $table->string('state');
             $table->string('gender');
             $table->integer('phone');
             $table->string('blood_type');
-            $table->string('type_rh');
             $table->foreignId('user_id');
             $table->foreign('user_id')
             ->references('id')->on('users'); 

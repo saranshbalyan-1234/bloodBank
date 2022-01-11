@@ -29,20 +29,36 @@ class UserRequest extends FormRequest
         $method = $arr[1]; // The controller method
     
         switch ($method) {
-           case 'register':
-            return [
-                'name'=>"required|regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
-                'email'=>'required|email|unique:users,email',
-                'password'=>'required',
-            ];
+            case 'register':
+                return [
+                    'name'=>"required|regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
+                    'email'=>'required|email|unique:users,email',
+                    'age'=>'required',
+                    'gender'=>'required',
+                    'address'=>'required',
+                    'city'=>'required',
+                    'state'=>'required',
+                    'password'=>'required',
+                    'phone'=>'required',
+                    'blood_type'=>'required',
+                ];
                break;
-           case 'login':
-            return [
-                'email'=>'required|email',
-                'password'=>'required',
-            ];
-            break;
-       
+            case 'login':
+                return [
+                    'email'=>'required|email',
+                    'password'=>'required',
+                ];
+                break;
+            case 'getDonorById':
+                return ['id'=>'required'];
+                break;
+            case 'getAllDonorsByState':
+                return ['state'=>'required'];
+                break;
+            case 'getAllDonorsByCity':
+                return ['city'=>'required'];
+                break;
+
           default: return [];
         }       
     }
