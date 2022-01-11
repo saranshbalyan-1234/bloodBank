@@ -21,6 +21,16 @@ class UsersController extends Controller
         return response()->json(['registerData' => $user,"status"=>"success"]);
     }
 
+    function update(UserRequest $req){
+        $user = User::find($req->id);
+        $temp = collect($req->all());
+        if($req->password){
+        $temp->put('password', Hash::make($req->password));
+        }
+       $user->update($temp->toArray());
+        return response()->json(['registerData' => $user,"status"=>"success"]);
+    }
+
     function getDonorById(UserRequest $req){
        if(Auth::user()->id == $req->id){
         $user= User::find($req->id);

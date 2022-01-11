@@ -58,6 +58,12 @@ class UserRequest extends FormRequest
             case 'getAllDonorsByCity':
                 return ['city'=>'required'];
                 break;
+            case 'update':
+                return [
+                    'id'=>'required',
+                    'name'=>"regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
+                    'email'=>'email|unique:users,email'
+                ];
 
           default: return [];
         }       
