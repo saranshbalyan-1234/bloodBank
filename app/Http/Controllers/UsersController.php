@@ -48,8 +48,8 @@ class UsersController extends Controller
         $user= User::where(['state' => $req->state])->get();
         return response()->json(['donorsData' => $user,"status"=>"success"]);
     }
-    function getAllDonorsByCity(UserRequest $req){
-        $user= User::where(['city' => $req->city])->get();
+    function getAllDonorsByStateCity(UserRequest $req){
+        $user= User::where(['city' => $req->city,'state'=>$req->state])->get();
         return response()->json(['donorsData' => $user,"status"=>"success"]);
     }
     function login(Request $req){   

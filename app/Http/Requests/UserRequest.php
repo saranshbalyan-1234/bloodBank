@@ -55,8 +55,8 @@ class UserRequest extends FormRequest
             case 'getAllDonorsByState':
                 return ['state'=>'required'];
                 break;
-            case 'getAllDonorsByCity':
-                return ['city'=>'required'];
+            case 'getAllDonorsByStateCity':
+                return ['city'=>'required','state'=>'required'];
                 break;
             case 'update':
                 return [
