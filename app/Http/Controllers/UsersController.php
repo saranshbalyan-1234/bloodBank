@@ -24,11 +24,17 @@ class UsersController extends Controller
     function update(UserRequest $req){
         $user = User::find($req->id);
         $temp = collect($req->all());
-        if($req->password){
-        $temp->put('password', Hash::make($req->password));
+        if($req->oldPassword && $req->newPassword){
+            if(Hash::check($req->oldPassword, $user->password)  ){
+                $temp->put('password', Hash::make($req->newPassword));
+            }
+            else{
+                return response()->json(['error' => "Old password is not correct.","status"=>"failure"]);
+            }
+
         }
        $user->update($temp->toArray());
-        return response()->json(['registerData' => $user,"status"=>"success"]);
+        return response()->json(['updatedData' => $user,"status"=>"success"]);
     }
 
     function getDonorById(UserRequest $req){
@@ -40,18 +46,17 @@ class UsersController extends Controller
         return response()->json(['errors' => ['message'=>'Unauthenticated'],"status"=>"exception"]);
        }
     }
-    function getAllDonors(Request $req){
-        $user= User::all();
-        return response()->json(['donorsData' => $user,"status"=>"success"]);
+
+    function findDonors(UserRequest $req){
+        $temp = collect($req->all());
+        if($req->blood_type=='All')  $temp->forget('blood_type'); 
+        if($req->city=='All') $temp->forget('city'); 
+        if($req->state=='All') $temp->forget('state'); 
+        
+            $user= User::where($temp->toArray())->get();
+            return response()->json(['donorsData' => $user,"status"=>"success"]);
     }
-    function getAllDonorsByState(UserRequest $req){
-        $user= User::where(['state' => $req->state])->get();
-        return response()->json(['donorsData' => $user,"status"=>"success"]);
-    }
-    function getAllDonorsByStateCity(UserRequest $req){
-        $user= User::where(['city' => $req->city,'state'=>$req->state])->get();
-        return response()->json(['donorsData' => $user,"status"=>"success"]);
-    }
+    
     function login(Request $req){   
         $check=false;
         $user = User::where(['email' => $req->email])

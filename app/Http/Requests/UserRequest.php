@@ -52,18 +52,13 @@ class UserRequest extends FormRequest
             case 'getDonorById':
                 return ['id'=>'required'];
                 break;
-            case 'getAllDonorsByState':
-                return ['state'=>'required'];
-                break;
-            case 'getAllDonorsByStateCity':
-                return ['city'=>'required','state'=>'required'];
-                break;
             case 'update':
                 return [
                     'id'=>'required',
                     'name'=>"regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
                     'email'=>'email|unique:users,email'
                 ];
+                break;
 
           default: return [];
         }       
@@ -71,7 +66,7 @@ class UserRequest extends FormRequest
 
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response()->json(['errors' => $validator->errors(),"status"=>"exception"], 401));
+        throw new HttpResponseException(response()->json(['errors' => $validator->errors(),"status"=>"exception"], 403));
     }
 
 }
