@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
-class UserNotification extends Model
+
+class Feed extends Model
 {
     use HasFactory;
-    protected $table = 'user_notification';
     protected $fillable = [
-      'user_id','notification_id'
-    ];
-    public function getCreatedAtAttribute($date)
+        'title','description','img'
+       ];
+
+public function getCreatedAtAttribute($date)
 {
     $newDate=Carbon::parse($date)->addMinutes(330);
     return Carbon::createFromFormat('Y-m-d H:i:s', $newDate)->format('d-m-Y h:i A');
@@ -21,5 +22,5 @@ public function getUpdatedAtAttribute($date)
 {
     $newDate=Carbon::parse($date)->addMinutes(330);
     return Carbon::createFromFormat('Y-m-d H:i:s', $newDate)->format('d-m-Y h:i A');
-}   
+}    
 }

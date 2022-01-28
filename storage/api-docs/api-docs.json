@@ -516,6 +516,14 @@
                                         "status": {
                                             "type": "string",
                                             "example": "success"
+                                        },
+                                        "total_notification_count": {
+                                            "type": "integer",
+                                            "example": 2
+                                        },
+                                        "unread_notification_count": {
+                                            "type": "integer",
+                                            "example": 1
                                         }
                                     },
                                     "type": "object"
@@ -583,6 +591,213 @@
                     }
                 ]
             }
+        },
+        "/addNotification": {
+            "post": {
+                "tags": [
+                    "Notification"
+                ],
+                "summary": "Add New Notification",
+                "description": "Add new Notification to table!",
+                "requestBody": {
+                    "description": "Please provide title and description only",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "title"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "description"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "notificationData": {
+                                            "type": "object",
+                                            "example": "{id: 1,title:title, description:description}"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/addFeed": {
+            "post": {
+                "tags": [
+                    "Feed"
+                ],
+                "summary": "Add New Feed",
+                "description": "Add new Feed to table!",
+                "requestBody": {
+                    "description": "Please provide title, description and img. img is not necessary",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "title"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "description"
+                                    },
+                                    "img": {
+                                        "type": "string",
+                                        "example": "base64string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "feedData": {
+                                            "type": "object",
+                                            "example": "{id: 1,title:title, description:description,img:base64string}"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/getFeedById": {
+            "post": {
+                "tags": [
+                    "Feed"
+                ],
+                "summary": "Get Feed By Id",
+                "description": "Get Single Feed Data",
+                "requestBody": {
+                    "description": "Please provide id only",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "feedData": {
+                                            "type": "object",
+                                            "example": "{id: 1,title:title, description:description,img:base64string}"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/getAllFeed": {
+            "post": {
+                "tags": [
+                    "Feed"
+                ],
+                "summary": "Get all feeds",
+                "description": "Returns All Feed",
+                "responses": {
+                    "200": {
+                        "description": "Success Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "feedData": {
+                                            "type": "object",
+                                            "example": "[{id:1, title:title, description:description, img:base64string}]"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
         }
     },
     "tags": [
@@ -601,6 +816,10 @@
         {
             "name": "Notification",
             "description": "Notification related API"
+        },
+        {
+            "name": "Feed",
+            "description": "Feeds related API"
         }
     ],
     "components": {

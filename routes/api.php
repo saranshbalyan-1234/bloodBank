@@ -7,6 +7,7 @@ use App\Http\Controllers\DonorsController;
 use App\Http\Controllers\ConstantController;
 use App\Http\Controllers\WorldController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\UserNotificationController;
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,11 @@ Route::group(['middleware'=>['auth:sanctum']],function () {
     Route::post('/updateNotification',[NotificationController::class,'updateNotification']);
     Route::post('/getAllNotification',[NotificationController::class,'getAllNotification']);
     Route::post('/getNotificationById',[NotificationController::class,'getNotificationById']);
+
+    Route::post('/addFeed',[FeedController::class,'addFeed']);
+    Route::post('/updateFeed',[FeedController::class,'updateFeed']);
+    Route::post('/getAllFeed',[FeedController::class,'getAllFeed']);
+    Route::post('/getFeedById',[FeedController::class,'getFeedById']);
 
     Route::post('/readNotification',[UserNotificationController::class,'readNotification']);
 

@@ -18,8 +18,14 @@ class NotificationController extends Controller
         return response()->json(['updatedNotification' => $notification,"status"=>"success"]);
     }
     function getAllNotification(){
+        $unread_notification_count=0;
+        $total_notification_count=0;
         $notification= Notification::withExists('read')->get();
-        return response()->json(['notificationData' => $notification,"status"=>"success"]);
+        foreach ($notification as $no) {
+          if($no->read_exists==false) $unread_notification_count++;
+          $total_notification_count++;
+            }
+        return response()->json(['notificationData' => $notification,'unread_notification_count'=>$unread_notification_count,'total_notification_count'=>$total_notification_count,"status"=>"success"]);
     }
     function getNotificationById(NotificationRequest $req){
          $notification= Notification::find($req->id);

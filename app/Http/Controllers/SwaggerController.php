@@ -25,6 +25,10 @@ class SwaggerController extends Controller
 *     name="Notification",
 *     description="Notification related API"
 * )
+* @OA\Tag(
+*     name="Feed",
+*     description="Feeds related API"
+* )
 * @OA\Server(
     *      url=L5_SWAGGER_CONST_HOST,
     *      description="Demo API Server"
@@ -294,7 +298,9 @@ class SwaggerController extends Controller
 *             mediaType="application/json",
 *          @OA\Schema(
 *         @OA\Property(property="notificationData", type="object",example="[{id:1, title:notification, description:description, read_exists:true}]"),
-*              @OA\Property(property="status", type="string",example="success")            
+*              @OA\Property(property="status", type="string",example="success"),  
+*              @OA\Property(property="total_notification_count", type="integer",example=2),  
+*              @OA\Property(property="unread_notification_count", type="integer",example=1)             
 * ),
 *             )
 *         )
@@ -326,6 +332,107 @@ class SwaggerController extends Controller
 *             )
 *         )
 *     ),
+* @OA\Post(
+*     path="/addNotification",
+* tags={"Notification"},
+*  summary="Add New Notification",
+* security={ * {"sanctum": {}}, * },
+*      description="Add new Notification to table!",
+*      @OA\RequestBody(
+*          description= "Please provide title and description only",
+*          required=false,
+*           @OA\JsonContent(
+*              type="object",    
+*              @OA\Property(property="title", type="string",example="title"),
+*              @OA\Property(property="description", type="string",example="description"),
+*   
+*          )
+*     ),
+*      @OA\Response(
+*         response=200,
+*         description="Success Response",
+*     @OA\MediaType(
+*             mediaType="application/json",
+*             @OA\Schema(
+*         @OA\Property(property="notificationData", type="object",example="{id: 1,title:title, description:description}"),
+*              @OA\Property(property="status", type="string",example="success"),       
+* ),
+*             )
+*         )
+*     ),
+* @OA\Post(
+*     path="/addFeed",
+* tags={"Feed"},
+*  summary="Add New Feed",
+* security={ * {"sanctum": {}}, * },
+*      description="Add new Feed to table!",
+*      @OA\RequestBody(
+*          description= "Please provide title, description and img. img is not necessary",
+*          required=false,
+*           @OA\JsonContent(
+*              type="object",    
+*              @OA\Property(property="title", type="string",example="title"),
+*              @OA\Property(property="description", type="string",example="description"),
+*              @OA\Property(property="img", type="string",example="base64string"),
+*          )
+*     ),
+*      @OA\Response(
+*         response=200,
+*         description="Success Response",
+*     @OA\MediaType(
+*             mediaType="application/json",
+*             @OA\Schema(
+*         @OA\Property(property="feedData", type="object",example="{id: 1,title:title, description:description,img:base64string}"),
+*              @OA\Property(property="status", type="string",example="success"),       
+* ),
+*             )
+*         )
+*     ),
+* @OA\Post(
+*     path="/getFeedById",
+* tags={"Feed"},
+*  summary="Get Feed By Id",
+* security={ * {"sanctum": {}}, * },
+*      description="Get Single Feed Data",
+*      @OA\RequestBody(
+*          description= "Please provide id only",
+*          required=false,
+*           @OA\JsonContent(
+*              type="object",    
+*              @OA\Property(property="id", type="integer",example=1),
+*          )
+*     ),
+*      @OA\Response(
+*         response=200,
+*         description="Success Response",
+*     @OA\MediaType(
+*             mediaType="application/json",
+*             @OA\Schema(
+*         @OA\Property(property="feedData", type="object",example="{id: 1,title:title, description:description,img:base64string}"),
+*              @OA\Property(property="status", type="string",example="success"),       
+* ),
+*             )
+*         )
+*     ),
+* @OA\Post(
+*     path="/getAllFeed",
+* tags={"Feed"},
+*  summary="Get all feeds",
+* security={ * {"sanctum": {}}, * },
+*      description="Returns All Feed",
+*     
+*      @OA\Response(
+*         response=200,
+*         description="Success Response",
+*     @OA\MediaType(
+*             mediaType="application/json",
+*          @OA\Schema(
+*         @OA\Property(property="feedData", type="object",example="[{id:1, title:title, description:description, img:base64string}]"),
+*              @OA\Property(property="status", type="string",example="success")         
+* ),
+*             )
+*         )
+*     )
  */
  
 }
