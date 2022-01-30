@@ -40,7 +40,7 @@ class UsersController extends Controller
     function getDonorById(UserRequest $req){
        if(Auth::user()->id == $req->id){
         $user= User::find($req->id);
-        return response()->json(['donorsData' => $user,"status"=>"success"]);
+        return response()->json(['usersData' => $user,"status"=>"success"]);
        }
        else{
         return response()->json(['errors' => ['message'=>'Unauthenticated'],"status"=>"exception"]);

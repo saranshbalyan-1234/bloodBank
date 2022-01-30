@@ -26,7 +26,7 @@ Route::post('/register',[UsersController::class,'register']);
 Route::group(['middleware'=>['auth:sanctum']],function () {
     Route::post('/update',[UsersController::class,'update']);
 
-    Route::post('/getDonorById',[UsersController::class,'getDonorById']);
+    Route::post('/getUserById',[UsersController::class,'getDonorById']);
     Route::post('/getAllDonors',[UsersController::class,'getAllDonors']);
     Route::post('/findDonors',[UsersController::class,'findDonors']);
     Route::post('/getAllBloodType',[ConstantController::class,'getAllBloodType']);

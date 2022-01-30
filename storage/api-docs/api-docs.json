@@ -347,6 +347,59 @@
                 ]
             }
         },
+        "/getUserById": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get Donors",
+                "description": "Get all donors, get donors by State, City, Blood Group",
+                "requestBody": {
+                    "description": "Provide only parameters to search, except enter 'all'",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "usersData": {
+                                            "type": "object",
+                                            "example": "[{id: 1,name:admin, email:admin@admin.com, age:22, address:e-15, city:delhi,state: delhi, gender:male, phone:123, blood_type:A+}]"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/getAllBloodType": {
             "post": {
                 "tags": [

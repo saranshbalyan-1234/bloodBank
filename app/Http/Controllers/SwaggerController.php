@@ -194,6 +194,32 @@ class SwaggerController extends Controller
 *             )
 *         )
 *     ),
+* @OA\Post(
+*     path="/getUserById",
+* tags={"User"},
+*  summary="Get Donors",
+* security={ * {"sanctum": {}}, * },
+*      description="Get all donors, get donors by State, City, Blood Group",
+*      @OA\RequestBody(
+*          description= "Provide only parameters to search, except enter 'all'",
+*          required=false,
+*           @OA\JsonContent(
+*              type="object",    
+*              @OA\Property(property="id", type="integer",example=1),
+*          )
+*     ),
+*      @OA\Response(
+*         response=200,
+*         description="Success Response",
+*     @OA\MediaType(
+*             mediaType="application/json",
+*             @OA\Schema(
+*         @OA\Property(property="usersData", type="object",example="[{id: 1,name:admin, email:admin@admin.com, age:22, address:e-15, city:delhi,state: delhi, gender:male, phone:123, blood_type:A+}]"),
+*              @OA\Property(property="status", type="string",example="success")            
+* ),
+*             )
+*         )
+*     ),
 
 * @OA\Post(
 *     path="/getAllBloodType",
