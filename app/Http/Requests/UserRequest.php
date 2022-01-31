@@ -56,7 +56,7 @@ class UserRequest extends FormRequest
                 return [
                     'id'=>'required',
                     'name'=>"regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
-                    'email'=>'email|unique:users,email'
+                    'email'=>'email'
                 ];
                 break;
 

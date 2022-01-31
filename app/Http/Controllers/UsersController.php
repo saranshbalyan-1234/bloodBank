@@ -24,6 +24,7 @@ class UsersController extends Controller
     function update(UserRequest $req){
         $user = User::find($req->id);
         $temp = collect($req->all());
+          $temp->forget('password');
         if($req->oldPassword && $req->newPassword){
             if(Hash::check($req->oldPassword, $user->password)  ){
                 $temp->put('password', Hash::make($req->newPassword));
@@ -31,8 +32,8 @@ class UsersController extends Controller
             else{
                 return response()->json(['error' => "Old password is not correct.","status"=>"failure"]);
             }
-
         }
+     
        $user->update($temp->toArray());
         return response()->json(['updatedData' => $user,"status"=>"success"]);
     }

@@ -138,6 +138,7 @@ class SwaggerController extends Controller
     *          required=false,
     *           @OA\JsonContent(
     *              type="object",    
+    *              @OA\Property(property="id", type="integer",example=1),
     *              @OA\Property(property="name", type="string",example="admin.com"),
     *              @OA\Property(property="email", type="string",example="admin@admin.com"),
     *              @OA\Property(property="password", type="string",example="admin"),
