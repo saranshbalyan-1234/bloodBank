@@ -15,12 +15,22 @@ class CreateRequestDonorsTable extends Migration
     {
         Schema::create('request_donors', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
             $table->integer('age');
             $table->string('gender');
             $table->integer('phone');
+            $table->string('address');
+            $table->string('city');
+            $table->string('state');
+            $table->string('hospital_name');
+            $table->integer('hospital_phone');
+            $table->string('hospital_address');
+            $table->string('hospital_city');
+            $table->string('hospital_state');
             $table->string('blood_type');
-            $table->string('type_rh');
-            $table->integer('unit');
+            // $table->string('type_rh');
+            // $table->integer('unit');
             $table->foreignId('user_id');
             $table->foreign('user_id')
             ->references('id')->on('users'); 

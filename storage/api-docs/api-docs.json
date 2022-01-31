@@ -855,6 +855,111 @@
                     }
                 ]
             }
+        },
+        "/requestDonation": {
+            "post": {
+                "tags": [
+                    "RequestDonation"
+                ],
+                "summary": "Request donation here",
+                "description": "Returns request details",
+                "requestBody": {
+                    "description": "Provide provide all parameters",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "admin.com"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "admin@admin.com"
+                                    },
+                                    "age": {
+                                        "type": "integer",
+                                        "example": 18
+                                    },
+                                    "gender": {
+                                        "type": "string",
+                                        "example": "male"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "address"
+                                    },
+                                    "state": {
+                                        "type": "string",
+                                        "example": "Delhi"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "example": "delhi"
+                                    },
+                                    "phone": {
+                                        "type": "integer",
+                                        "example": 987654321
+                                    },
+                                    "hospital_name": {
+                                        "type": "string",
+                                        "example": "hospital name"
+                                    },
+                                    "hospital_address": {
+                                        "type": "string",
+                                        "example": "hospital address"
+                                    },
+                                    "hospital_state": {
+                                        "type": "string",
+                                        "example": "Delhi"
+                                    },
+                                    "hospital_city": {
+                                        "type": "string",
+                                        "example": "delhi"
+                                    },
+                                    "hospital_phone": {
+                                        "type": "integer",
+                                        "example": 987654321
+                                    },
+                                    "blood_type": {
+                                        "type": "string",
+                                        "example": "A+"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "requestDonorsData": {
+                                            "type": "object",
+                                            "example": "id: 1,name:admin, email:admin@admin.com, age:22, address:e-15, city:delhi,state: delhi, gender:male, phone:123, blood_type:A+, hospital_name:name, hospital_address:address, hospital_city:city, hospital_address:address, hospital_phone:809"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
         }
     },
     "tags": [
@@ -865,6 +970,10 @@
         {
             "name": "Donor",
             "description": "All Donor related API"
+        },
+        {
+            "name": "RequestDonation",
+            "description": "All request related API"
         },
         {
             "name": "Geographical",

@@ -18,6 +18,10 @@ class SwaggerController extends Controller
 *     description="All Donor related API"
 * )
 * @OA\Tag(
+*     name="RequestDonation",
+*     description="All request related API"
+* )
+* @OA\Tag(
 *     name="Geographical",
 *     description="Geographical related API"
 * )
@@ -460,6 +464,47 @@ class SwaggerController extends Controller
 *             )
 *         )
 *     )
+ * @OA\Post(
+    *     path="/requestDonation",
+    * tags={"RequestDonation"},
+    *  summary="Request donation here",
+       * security={ * {"sanctum": {}}, * },
+        *      description="Returns request details",
+        *      @OA\RequestBody(
+    *          description= "Provide provide all parameters",
+    *          required=false,
+    *           @OA\JsonContent(
+    *              type="object",    
+    *              @OA\Property(property="name", type="string",example="admin.com"),
+    *              @OA\Property(property="email", type="string",example="admin@admin.com"),
+    *              @OA\Property(property="age", type="integer",example=18),
+    *              @OA\Property(property="gender", type="string",example="male"),
+    *              @OA\Property(property="address", type="string",example="address"),
+    *              @OA\Property(property="state", type="string",example="Delhi"),
+    *              @OA\Property(property="city", type="string",example="delhi"),
+    *              @OA\Property(property="phone", type="integer",example=0987654321),
+    *              @OA\Property(property="hospital_name", type="string",example="hospital name"),
+    *              @OA\Property(property="hospital_address", type="string",example="hospital address"),
+    *              @OA\Property(property="hospital_state", type="string",example="Delhi"),
+    *              @OA\Property(property="hospital_city", type="string",example="delhi"),
+    *              @OA\Property(property="hospital_phone", type="integer",example=0987654321),
+    *              @OA\Property(property="blood_type", type="string",example="A+"),
+    *          )
+    *     ),
+    *      @OA\Response(
+          *         response=200,
+          *         description="Success Response",
+          *     @OA\MediaType(
+         *             mediaType="application/json",
+         *             @OA\Schema(
+         *         @OA\Property(property="requestDonorsData", type="object",example="id: 1,name:admin, email:admin@admin.com, age:22, address:e-15, city:delhi,state: delhi, gender:male, phone:123, blood_type:A+, hospital_name:name, hospital_address:address, hospital_city:city, hospital_address:address, hospital_phone:809"),
+    *              @OA\Property(property="status", type="string",example="success")
+         *              
+       * ),
+         *             )
+         *         )
+         *     ),
  */
+
  
 }
