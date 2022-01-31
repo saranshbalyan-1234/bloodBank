@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 // use App\Http\Requests\HttpResponseException;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -56,7 +57,7 @@ class UserRequest extends FormRequest
                 return [
                     'id'=>'required',
                     'name'=>"regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
-                    'email'=>'email'
+                    'email'=>'required|email|unique:users,email,'.Auth::user()->id,
                 ];
                 break;
 

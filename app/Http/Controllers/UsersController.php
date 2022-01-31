@@ -24,7 +24,7 @@ class UsersController extends Controller
     function update(UserRequest $req){
         $user = User::find($req->id);
         $temp = collect($req->all());
-          $temp->forget('password');
+        $temp->forget('password');
         if($req->oldPassword && $req->newPassword){
             if(Hash::check($req->oldPassword, $user->password)  ){
                 $temp->put('password', Hash::make($req->newPassword));
