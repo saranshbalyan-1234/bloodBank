@@ -42,14 +42,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     public function request()
+    {
+        return $this->hasMany(RequestDonor::class, 'user_id');
+    }
+
     public function getCreatedAtAttribute($date)
-{
-    $newDate=Carbon::parse($date)->addMinutes(330);
-    return Carbon::createFromFormat('Y-m-d H:i:s', $newDate)->format('d-m-Y h:i A');
-}
-public function getUpdatedAtAttribute($date)
-{
-    $newDate=Carbon::parse($date)->addMinutes(330);
-    return Carbon::createFromFormat('Y-m-d H:i:s', $newDate)->format('d-m-Y h:i A');
-}   
+    {
+        $newDate=Carbon::parse($date)->addMinutes(330);
+        return Carbon::createFromFormat('Y-m-d H:i:s', $newDate)->format('d-m-Y h:i A');
+    }
+    public function getUpdatedAtAttribute($date)
+    {
+        $newDate=Carbon::parse($date)->addMinutes(330);
+        return Carbon::createFromFormat('Y-m-d H:i:s', $newDate)->format('d-m-Y h:i A');
+    }   
 }

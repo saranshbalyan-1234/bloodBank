@@ -29,6 +29,7 @@ Route::group(['middleware'=>['auth:sanctum']],function () {
     Route::post('/update',[UsersController::class,'update']);
     Route::post('/logout',[UsersController::class,'logout']);
 
+    Route::post('/getAllRequest',[UsersController::class,'getAllRequest']);
     Route::post('/getUserById',[UsersController::class,'getDonorById']);
     Route::post('/getAllDonors',[UsersController::class,'getAllDonors']);
     Route::post('/findDonors',[UsersController::class,'findDonors']);

@@ -81,5 +81,9 @@ class UsersController extends Controller
         $req->user()->currentAccessToken()->delete();
         return response()->json(['logoutData' => "Successfully Logged Out","status"=>"success"]);
     }
+    function getAllRequest(){
+    $user=User::find(Auth::user()->id)->with('request')->first();
+    return response()->json(['requestData' => $user->request,"status"=>"success"]);
+    }
     
 }
