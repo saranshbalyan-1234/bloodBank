@@ -15,4 +15,11 @@ class RequestDonorsController extends Controller
         return response()->json(['requestDonorsData' => $user,"status"=>"success"]);
         
     }
+     function allRequest(Request $req){
+       
+   
+      $request = RequestDonor::all();
+        return response()->json(['requestDonorsData' => $request,"status"=>"success"]);
+        
+    }
 }

@@ -523,6 +523,25 @@ class SwaggerController extends Controller
 *             )
 *         )
 *     )
+* @OA\Post(
+*     path="/getAllUserRequest",
+* tags={"RequestDonation"},
+*  summary="Get all User Request",
+* security={ * {"sanctum": {}}, * },
+*      description="Returns All Request By All User",
+*     
+*      @OA\Response(
+*         response=200,
+*         description="Success Response",
+*     @OA\MediaType(
+*             mediaType="application/json",
+*          @OA\Schema(
+*         @OA\Property(property="requestData", type="object",example="[{id: 1,name:admin, email:admin@admin.com, age:22, address:e-15, city:delhi,state: delhi, gender:male, phone:123, blood_type:A+, hospital_name:name, hospital_address:address, hospital_city:city, hospital_address:address, hospital_phone:809}]"),
+*              @OA\Property(property="status", type="string",example="success")         
+* ),
+*             )
+*         )
+*     )
  */
 
  

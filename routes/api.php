@@ -30,6 +30,7 @@ Route::group(['middleware'=>['auth:sanctum']],function () {
     Route::post('/logout',[UsersController::class,'logout']);
 
     Route::post('/getAllRequest',[UsersController::class,'getAllRequest']);
+    Route::post('/getAllUserRequest',[RequestDonorsController::class,'allRequest']);
     Route::post('/getUserById',[UsersController::class,'getDonorById']);
     Route::post('/getAllDonors',[UsersController::class,'getAllDonors']);
     Route::post('/findDonors',[UsersController::class,'findDonors']);
@@ -51,5 +52,7 @@ Route::group(['middleware'=>['auth:sanctum']],function () {
     Route::post('/getFeedById',[FeedController::class,'getFeedById']);
 
     Route::post('/requestDonation',[RequestDonorsController::class,'requestDonor']);
+    
+    
 
 });

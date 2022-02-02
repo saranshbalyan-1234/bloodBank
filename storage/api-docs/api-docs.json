@@ -966,8 +966,44 @@
                 "tags": [
                     "RequestDonation"
                 ],
-                "summary": "Get all feeds",
+                "summary": "Get all Request",
                 "description": "Returns All Request By User",
+                "responses": {
+                    "200": {
+                        "description": "Success Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "requestData": {
+                                            "type": "object",
+                                            "example": "[{id: 1,name:admin, email:admin@admin.com, age:22, address:e-15, city:delhi,state: delhi, gender:male, phone:123, blood_type:A+, hospital_name:name, hospital_address:address, hospital_city:city, hospital_address:address, hospital_phone:809}]"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/getAllUserRequest": {
+            "post": {
+                "tags": [
+                    "RequestDonation"
+                ],
+                "summary": "Get all User Request",
+                "description": "Returns All Request By All User",
                 "responses": {
                     "200": {
                         "description": "Success Response",
