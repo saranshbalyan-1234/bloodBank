@@ -524,12 +524,23 @@ class SwaggerController extends Controller
 *         )
 *     )
 * @OA\Post(
-*     path="/getAllUserRequest",
+*     path="/findRequest",
 * tags={"RequestDonation"},
-*  summary="Get all User Request",
+*  summary="Find All User Request",
 * security={ * {"sanctum": {}}, * },
-*      description="Returns All Request By All User",
-*     
+*      description="Get all Request, get donors by State, City, Blood Group",
+*      @OA\RequestBody(
+*          description= "Provide only parameters to search, except enter 'all'",
+*          required=false,
+*           @OA\JsonContent(
+*              type="object",    
+*              @OA\Property(property="state", type="string",example="All"),
+*              @OA\Property(property="city", type="string",example="All"),
+*              @OA\Property(property="hospital_state", type="string",example="All"),
+*              @OA\Property(property="hospital_city", type="string",example="All"),
+*              @OA\Property(property="blood_type", type="string",example="All")
+*          )
+*     ),
 *      @OA\Response(
 *         response=200,
 *         description="Success Response",

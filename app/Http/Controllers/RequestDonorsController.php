@@ -11,15 +11,20 @@ class RequestDonorsController extends Controller
        
       $temp = collect($req->all());
       $temp->put('user_id',Auth::user()->id);
-      $user = RequestDonor::create($temp->toArray());
-        return response()->json(['requestDonorsData' => $user,"status"=>"success"]);
-        
-    }
-     function allRequest(Request $req){
-       
-   
-      $request = RequestDonor::all();
+      $request = RequestDonor::create($temp->toArray());
         return response()->json(['requestDonorsData' => $request,"status"=>"success"]);
         
+    }
+     function findRequest(Request $req){
+
+        $temp = collect($req->all());
+        if($req->blood_type=='All')  $temp->forget('blood_type'); 
+        if($req->city=='All') $temp->forget('city'); 
+        if($req->state=='All') $temp->forget('state'); 
+        if($req->hospital_city=='All') $temp->forget('hospital_city'); 
+        if($req->hospital_state=='All') $temp->forget('hospital_state'); 
+        
+            $request= RequestDonor::where($temp->toArray())->get();
+            return response()->json(['donorsData' => $request,"status"=>"success"]);
     }
 }

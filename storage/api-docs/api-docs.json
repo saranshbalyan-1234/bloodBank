@@ -997,13 +997,46 @@
                 ]
             }
         },
-        "/getAllUserRequest": {
+        "/findRequest": {
             "post": {
                 "tags": [
                     "RequestDonation"
                 ],
-                "summary": "Get all User Request",
-                "description": "Returns All Request By All User",
+                "summary": "Find All User Request",
+                "description": "Get all Request, get donors by State, City, Blood Group",
+                "requestBody": {
+                    "description": "Provide only parameters to search, except enter 'all'",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "state": {
+                                        "type": "string",
+                                        "example": "All"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "example": "All"
+                                    },
+                                    "hospital_state": {
+                                        "type": "string",
+                                        "example": "All"
+                                    },
+                                    "hospital_city": {
+                                        "type": "string",
+                                        "example": "All"
+                                    },
+                                    "blood_type": {
+                                        "type": "string",
+                                        "example": "All"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Success Response",
