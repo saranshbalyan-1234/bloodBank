@@ -53,7 +53,7 @@ class UsersController extends Controller
         if($req->blood_type=='All')  $temp->forget('blood_type'); 
         if($req->city=='All') $temp->forget('city'); 
         if($req->state=='All') $temp->forget('state'); 
-        
+        $temp->put('is_active',1);
             $user= User::where($temp->toArray())->get();
             return response()->json(['donorsData' => $user,"status"=>"success"]);
     }
