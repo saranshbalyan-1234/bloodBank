@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('phone');
             $table->string('blood_type');
             $table->string('password'); 
-            $table->tinyInteger('is_active')->default(1);
+            // $table->tinyInteger('is_active')->default(1);
            $table->timestamps();
         });
     }
