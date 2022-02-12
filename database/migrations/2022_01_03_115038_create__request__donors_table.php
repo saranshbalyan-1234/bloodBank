@@ -19,12 +19,12 @@ class CreateRequestDonorsTable extends Migration
             $table->string('email');
             $table->integer('age');
             $table->string('gender');
-            $table->integer('phone');
+            $table->bigInteger('phone');
             $table->string('address');
             $table->string('city');
             $table->string('state');
             $table->string('hospital_name');
-            $table->integer('hospital_phone');
+            $table->bigInteger('hospital_phone');
             $table->string('hospital_address');
             $table->string('hospital_city');
             $table->string('hospital_state');

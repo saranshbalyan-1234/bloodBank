@@ -25,21 +25,24 @@ use App\Http\Controllers\RequestDonorsController;
 Route::post('/login',[UsersController::class,'login']);
 Route::post('/register',[UsersController::class,'register']);
 
+Route::post('/getAllRequest',[UsersController::class,'getAllRequest']);
+Route::post('/findRequest',[RequestDonorsController::class,'findRequest']);
+Route::post('/getAllDonors',[UsersController::class,'getAllDonors']);
+Route::post('/findDonors',[UsersController::class,'findDonors']);
+Route::post('/getAllBloodType',[ConstantController::class,'getAllBloodType']);
+Route::post('/getAllCountries',[WorldController::class,'getAllCountries']);
+Route::post('/getAllStatesByCountry',[WorldController::class,'getAllStatesByCountry']);
+Route::post('/getAllCityByStates',[WorldController::class,'getAllCityByStates']);
+Route::post('/getAllFeed',[FeedController::class,'getAllFeed']);
+Route::post('/getFeedById',[FeedController::class,'getFeedById']);
+
 Route::group(['middleware'=>['auth:sanctum']],function () {
+    
+    Route::post('/getUserById',[UsersController::class,'getDonorById']);
     Route::post('/update',[UsersController::class,'update']);
     Route::post('/logout',[UsersController::class,'logout']);
 
-    Route::post('/getAllRequest',[UsersController::class,'getAllRequest']);
-    Route::post('/findRequest',[RequestDonorsController::class,'findRequest']);
-    Route::post('/getUserById',[UsersController::class,'getDonorById']);
-    Route::post('/getAllDonors',[UsersController::class,'getAllDonors']);
-    Route::post('/findDonors',[UsersController::class,'findDonors']);
-    Route::post('/getAllBloodType',[ConstantController::class,'getAllBloodType']);
-
-    Route::post('/getAllCountries',[WorldController::class,'getAllCountries']);
-    Route::post('/getAllStatesByCountry',[WorldController::class,'getAllStatesByCountry']);
-    Route::post('/getAllCityByStates',[WorldController::class,'getAllCityByStates']);
-
+   
     Route::post('/addNotification',[NotificationController::class,'addNotification']);
     Route::post('/updateNotification',[NotificationController::class,'updateNotification']);
     Route::post('/getAllNotification',[NotificationController::class,'getAllNotification']);
@@ -48,8 +51,6 @@ Route::group(['middleware'=>['auth:sanctum']],function () {
 
     Route::post('/addFeed',[FeedController::class,'addFeed']);
     Route::post('/updateFeed',[FeedController::class,'updateFeed']);
-    Route::post('/getAllFeed',[FeedController::class,'getAllFeed']);
-    Route::post('/getFeedById',[FeedController::class,'getFeedById']);
 
     Route::post('/requestDonation',[RequestDonorsController::class,'requestDonor']);
     
