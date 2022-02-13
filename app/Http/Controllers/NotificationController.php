@@ -27,8 +27,17 @@ class NotificationController extends Controller
             }
         return response()->json(['notificationData' => $notification,'unread_notification_count'=>$unread_notification_count,'total_notification_count'=>$total_notification_count,"status"=>"success"]);
     }
+    function getAllNotificationAdmin(){
+        $notification= Notification::all();
+        return response()->json(['notificationData' => $notification,"status"=>"success"]);
+    }
     function getNotificationById(NotificationRequest $req){
          $notification= Notification::find($req->id);
          return response()->json(['notificationData' => $notification,"status"=>"success"]);
+     }
+     function deleteNotificationById(NotificationRequest $req){
+         $notification= Notification::find($req->id);
+         $notification->delete();
+         return "success";
      }
 }

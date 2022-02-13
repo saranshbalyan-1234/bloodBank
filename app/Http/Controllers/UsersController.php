@@ -15,9 +15,12 @@ use App\Http\Requests\UserRequest;
 class UsersController extends Controller
 {
     function register(UserRequest $req){
+        if($req->is_donor_active){
+            $temp->put('is_donor_active',$req->is_donor_active);
+        }
         $temp = collect($req->all());
         $temp->put('password', Hash::make($req->password));
-       $user = User::create($temp->toArray());
+        $user = User::create($temp->toArray());
         return response()->json(['registerData' => $user,"status"=>"success"]);
     }
 
@@ -49,13 +52,13 @@ class UsersController extends Controller
     }
 
     function findDonors(UserRequest $req){
-        $date = \Carbon\Carbon::now()->subDays(7);
+        // $date = \Carbon\Carbon::now()->subDays(7);
         $temp = collect($req->all());
         if($req->blood_type=='All')  $temp->forget('blood_type'); 
         if($req->city=='All') $temp->forget('city'); 
         if($req->state=='All') $temp->forget('state'); 
         // $temp->put('created_at','<=',$date);
-            $user= User::where('created_at','>',$date)->get();
+            $user= User::where($temp->toArray())->get();
             return response()->json(['donorsData' => $user,"status"=>"success"]);
     }
     
@@ -81,6 +84,11 @@ class UsersController extends Controller
     function logout(Request $req){
         $req->user()->currentAccessToken()->delete();
         return response()->json(['logoutData' => "Successfully Logged Out","status"=>"success"]);
+    }
+    function delete(Request $req){
+       $user= User::find($req->id);
+       $user->delete();
+       return "success";
     }
     function getAllRequest(){
     $user=User::find(Auth::user()->id)->with('request')->first();

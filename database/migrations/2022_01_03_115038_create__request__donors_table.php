@@ -33,7 +33,7 @@ class CreateRequestDonorsTable extends Migration
             // $table->integer('unit');
             $table->foreignId('user_id');
             $table->foreign('user_id')
-            ->references('id')->on('users'); 
+            ->references('id')->on('users')->onDelete('cascade'); 
             $table->timestamps();
         });
     }

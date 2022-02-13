@@ -25,4 +25,9 @@ class FeedController extends Controller
           $feed= Feed::find($req->id);
           return response()->json(['feedData' => $feed,"status"=>"success"]);
       }
+      function deleteFeedById(Request $req){
+          $feed= Feed::find($req->id);
+          $feed->delete();
+          return "success";
+      }
 }

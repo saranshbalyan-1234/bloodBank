@@ -24,6 +24,7 @@ use App\Http\Controllers\RequestDonorsController;
 
 Route::post('/login',[UsersController::class,'login']);
 Route::post('/register',[UsersController::class,'register']);
+Route::post('/deleteUser',[UsersController::class,'delete']);
 
 Route::post('/getAllRequest',[UsersController::class,'getAllRequest']);
 Route::post('/findRequest',[RequestDonorsController::class,'findRequest']);
@@ -48,11 +49,16 @@ Route::group(['middleware'=>['auth:sanctum']],function () {
     Route::post('/getAllNotification',[NotificationController::class,'getAllNotification']);
     Route::post('/getNotificationById',[NotificationController::class,'getNotificationById']);
     Route::post('/readNotification',[UserNotificationController::class,'readNotification']);
+    Route::post('/getAllNotificationAdmin',[NotificationController::class,'getAllNotificationAdmin']);
+    Route::post('/deleteNotificationById',[NotificationController::class,'deleteNotificationById']);
 
     Route::post('/addFeed',[FeedController::class,'addFeed']);
+    Route::post('/deleteFeedById',[FeedController::class,'deleteFeedById']);
     Route::post('/updateFeed',[FeedController::class,'updateFeed']);
 
     Route::post('/requestDonation',[RequestDonorsController::class,'requestDonor']);
+    Route::post('/deleteRequest',[RequestDonorsController::class,'deleteRequest']);
+   
     
     
 

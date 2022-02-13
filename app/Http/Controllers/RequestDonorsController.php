@@ -27,4 +27,10 @@ class RequestDonorsController extends Controller
             $request= RequestDonor::where($temp->toArray())->get();
             return response()->json(['donorsData' => $request,"status"=>"success"]);
     }
+    function deleteRequest(Request $req){
+        $request= RequestDonor::find($req->id);
+        $request->delete();
+        return "success";
+        
+    }
 }
