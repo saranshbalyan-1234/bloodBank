@@ -58,6 +58,7 @@ class UsersController extends Controller
         if($req->city=='All') $temp->forget('city'); 
         if($req->state=='All') $temp->forget('state'); 
         // $temp->put('created_at','<=',$date);
+         $temp->put('is_donor_active','=',1);
             $user= User::where($temp->toArray())->get();
             return response()->json(['donorsData' => $user,"status"=>"success"]);
     }
@@ -80,11 +81,7 @@ class UsersController extends Controller
             }
         
     }
- function makeSelfDonor(Request $req){
-       $user= User::find(Auth::user()->id);
-       $user->is_donor_active=1;
-       return "success";
-    }
+
     function logout(Request $req){
         $req->user()->currentAccessToken()->delete();
         return response()->json(['logoutData' => "Successfully Logged Out","status"=>"success"]);

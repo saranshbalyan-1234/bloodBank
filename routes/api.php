@@ -42,7 +42,6 @@ Route::group(['middleware'=>['auth:sanctum']],function () {
     Route::post('/getUserById',[UsersController::class,'getDonorById']);
     Route::post('/update',[UsersController::class,'update']);
     Route::post('/logout',[UsersController::class,'logout']);
-    Route::post('/makeSelfDonor',[UsersController::class,'makeSelfDonor']);
    
     Route::post('/addNotification',[NotificationController::class,'addNotification']);
     Route::post('/updateNotification',[NotificationController::class,'updateNotification']);
