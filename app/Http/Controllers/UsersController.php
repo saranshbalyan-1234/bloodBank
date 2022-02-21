@@ -80,7 +80,11 @@ class UsersController extends Controller
             }
         
     }
-
+ function makeSelfDonor(Request $req){
+       $user= User::find(Auth::user()->id);
+       $user->is_donor_active=1;
+       return "success";
+    }
     function logout(Request $req){
         $req->user()->currentAccessToken()->delete();
         return response()->json(['logoutData' => "Successfully Logged Out","status"=>"success"]);
@@ -90,6 +94,7 @@ class UsersController extends Controller
        $user->delete();
        return "success";
     }
+
     function getAllRequest(){
     $user=User::find(Auth::user()->id)->with('request')->first();
     return response()->json(['requestData' => $user->request,"status"=>"success"]);
