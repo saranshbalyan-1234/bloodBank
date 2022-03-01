@@ -15,9 +15,7 @@ use App\Http\Requests\UserRequest;
 class UsersController extends Controller
 {
     function register(UserRequest $req){
-        if($req->is_donor_active){
-            $temp->put('is_donor_active',$req->is_donor_active);
-        }
+        // return $req->all();
         $temp = collect($req->all());
         $temp->put('password', Hash::make($req->password));
         $user = User::create($temp->toArray());
@@ -58,7 +56,7 @@ class UsersController extends Controller
         if($req->city=='All') $temp->forget('city'); 
         if($req->state=='All') $temp->forget('state'); 
         // $temp->put('created_at','<=',$date);
-         $temp->put('is_donor_active','=',1);
+        //  $temp->put('is_donor_active','=',1);
             $user= User::where($temp->toArray())->get();
             return response()->json(['donorsData' => $user,"status"=>"success"]);
     }
@@ -95,6 +93,11 @@ class UsersController extends Controller
     function getAllRequest(){
     $user=User::find(Auth::user()->id)->with('request')->first();
     return response()->json(['requestData' => $user->request,"status"=>"success"]);
+    }
+
+    function getAllDetails(){
+    $user=User::find(Auth::user()->id)->with('request')->with('donor')->with('donation_history')->first();
+    return response()->json(['requestData' => $user,"status"=>"success"]);
     }
     
 }
