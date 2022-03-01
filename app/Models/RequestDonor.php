@@ -8,6 +8,7 @@ use Carbon\Carbon;
 class RequestDonor extends Model
 {
     use HasFactory;
+    public $table = "request_donors";
      protected $fillable = [
         'name','email',
 'age','gender','blood_type','address','city','state','phone','hospital_address','hospital_city','hospital_state','hospital_phone','hospital_name','user_id'

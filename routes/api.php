@@ -78,6 +78,7 @@ Route::group(['middleware'=>['auth:sanctum']],function () {
 
     Route::post('/requestDonation',[RequestDonorsController::class,'requestDonor']);
     Route::post('/deleteRequest',[RequestDonorsController::class,'deleteRequest']);
+    Route::post('/getAllDetails',[UsersController::class,'getAllDetails']);
    
     
     

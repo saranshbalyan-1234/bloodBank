@@ -39,6 +39,7 @@ class UserRequest extends FormRequest
                     'address'=>'required',
                     'city'=>'required',
                     'state'=>'required',
+                    'district'=>'required',
                     'password'=>'required',
                     'phone'=>'required',
                     'blood_type'=>'required',

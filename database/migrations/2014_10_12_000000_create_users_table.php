@@ -16,17 +16,18 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            // $table->string('role')->default('donor');
             $table->string('email')->unique();
             $table->integer('age');
             $table->string('address');
             $table->string('city');
+            $table->string('district');
             $table->string('state');
             $table->string('gender');
             $table->bigInteger('phone');
             $table->string('blood_type');
             $table->string('password'); 
-            $table->tinyInteger('is_donor_active')->default(0);
+            $table->string('role')->default('user');
+
            $table->timestamps();
         });
     }

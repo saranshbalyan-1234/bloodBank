@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDonorsTable extends Migration
+class CreateDonorHistory extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,24 @@ class CreateDonorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('donors', function (Blueprint $table) {
+        Schema::create('donor_history', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')
             ->references('id')->on('users'); 
-            $table->integer('total_units_donated');
+            $table->integer('units');
             $table->string('is_active'); 
             $table->tinyInteger('blood')->nullable();
             $table->tinyInteger('sdp')->nullable();
             $table->tinyInteger('ffp')->nullable();
             $table->tinyInteger('rdp')->nullable();
             $table->tinyInteger('wbc')->nullable();
-            $table->tinyInteger('vehicle')->nullable();
+            $table->string('vehicle_avalability')->nullable();
             $table->integer('can_travel_distance')->nullable();
             $table->string('convt_time_int')->nullable();
-            $table->tinyInteger('ready_emergency')->nullable();
+            $table->string('ready_emergency')->nullable();
             $table->timestamps();
+
         });
     }
 
@@ -40,6 +41,6 @@ class CreateDonorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('donors');
+        Schema::dropIfExists('donor_history');
     }
 }
