@@ -26,10 +26,12 @@ use App\Http\Controllers\BeUserController;
 
 
 //beuser routes
-Route::get('/beuser',[BeUserController::class,'index']);
-Route::post('/beuserregister',[BeUserController::class,'store']);
-Route::put('/beuser/{id}',[BeUserController::class,'update']);
+// Route::get('/beuser',[BeUserController::class,'index']);
+
+// Route::post('/beuserregister',[BeUserController::class,'store']);
+Route::post('/beuserregister',[UsersController::class,'store']);
 Route::delete('/beuser/{id}',[BeUserController::class,'destroy']);
+Route::put('/beuser/{id}',[BeUserController::class,'update']);
 
 //beuser search by-
 Route::get('/beuser/{id}',[BeUserController::class,'showbyId']);//search by id
