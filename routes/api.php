@@ -10,6 +10,8 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\UserNotificationController;
 use App\Http\Controllers\RequestDonorsController;
+use App\Http\Controllers\BeUserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,25 @@ use App\Http\Controllers\RequestDonorsController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+
+//beuser routes
+Route::get('/beuser',[BeUserController::class,'index']);
+Route::post('/beuserregister',[BeUserController::class,'store']);
+Route::put('/beuser/{id}',[BeUserController::class,'update']);
+Route::delete('/beuser/{id}',[BeUserController::class,'destroy']);
+
+//beuser search by-
+Route::get('/beuser/{id}',[BeUserController::class,'showbyId']);//search by id
+Route::get('/beuser/search/name/{name}',[BeUserController::class,'searchbyName']);//search by name
+Route::get('/beuser/search/blood_type/{blood_type}',[BeUserController::class,'searchbyBloodType']);//search by blood type
+Route::get('/beuser/search/do_av_blood/{do_av_blood}',[BeUserController::class,'searchbyTypeDoBlood']);//search by blood availability
+Route::get('/beuser/search/do_av_sdp/{do_av_sdp}',[BeUserController::class,'searchbydTypeDoSDP']);//search by sdp availability
+Route::get('/beuser/search/do_av_ffp/{do_av_ffp}',[BeUserController::class,'searchbyTypeDoFFP']);//search by ffp ava.
+Route::get('/beuser/search/do_av_rdp/{do_av_rdp}',[BeUserController::class,'searchbyTypeDoRDP']);//search by rdp ava
+Route::get('/beuser/search/do_av_wbc/{do_av_wbc}',[BeUserController::class,'searchbyTypeDoWBC']);//search by wbc
+
+
 
 Route::post('/login',[UsersController::class,'login']);
 Route::post('/register',[UsersController::class,'register']);
