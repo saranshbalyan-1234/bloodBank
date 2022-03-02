@@ -34,6 +34,7 @@ class CreateBeUsersTable extends Migration
             $table->string('blood_type')->nullable();
 
             $table->string('do_av_blood')->nullable();
+
             $table->string('do_av_sdp')->nullable();
             $table->string('do_av_ffp')->nullable();
             $table->string('do_av_rdp')->nullable();
@@ -47,17 +48,25 @@ class CreateBeUsersTable extends Migration
 
 
             $table->string('type_do_blood')->nullable();
+            
             $table->string('type_do_sdp')->nullable();
             $table->string('type_do_ffp')->nullable();
             $table->string('type_do_rdp')->nullable();
             $table->string('type_do_wbc')->nullable();
 
-            $table->string('vehicle_avalability')->nullable();
+            $table->string('vehicle_car')->nullable();
+            $table->string('vehicle_bike')->nullable();
+
+
             $table->string('travel_do_blood')->nullable();
             $table->string('convt_time_int')->nullable();
             $table->string('ready_emergency')->nullable();
 
-            $table->string('interest_volunteer')->nullable();
+            $table->string('volunteer_admin')->nullable();
+            $table->string('volunteer_pick')->nullable();
+            $table->string('volunteer_other')->nullable();
+
+
             $table->string('purpose')->nullable();
 
 

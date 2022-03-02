@@ -3,21 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Country;
+use App\Models\District;
 use App\Models\State;
 use App\Models\City;
 class WorldController extends Controller
 {
-    function getAllCountries(){
-        $countries = Country::all();
-        return $countries;
-    }
-    function getAllStatesByCountry(Request $req){
-        $states = State::where(['country_id' => $req->country_id])->orderBy('name', 'ASC')->get();
+   function getAllStates(Request $req){
+        $states = State::orderBy('state_title', 'ASC')->get();
         return $states;
     }
-    function getAllCityByStates(Request $req){
-        $cities = City::where(['state_id' => $req->state_id])->orderBy('name', 'ASC')->get();
+    function getAllDistrictByStates(Request $req){
+        $district = District::where(['state_id' => $req->state_id])->orderBy('district_title', 'ASC')->get();
+        return $district;
+    }
+    function getAllCityByDistrict(Request $req){
+        $cities = City::where(['districtid' => $req->districtid])->orderBy('name', 'ASC')->get();
         return $cities;
     }
 }

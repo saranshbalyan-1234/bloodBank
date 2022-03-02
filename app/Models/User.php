@@ -21,7 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password','age','gender','blood_type','address','city','state','phone'
+        'password','age','gender','blood_type','address','city','state','phone','district'
     ];
 
     /**
@@ -47,7 +47,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(RequestDonor::class, 'user_id');
     }
-
+     public function donor()
+    {
+        return $this->hasOne(Donor::class, 'user_id');
+    }
+ public function donation_history()
+    {
+        return $this->hasMany(DonorsHistory::class, 'user_id');
+    }
     public function getCreatedAtAttribute($date)
     {
         $newDate=Carbon::parse($date)->addMinutes(330);
