@@ -31,9 +31,12 @@ Route::post('/findRequest',[RequestDonorsController::class,'findRequest']);
 Route::post('/getAllDonors',[UsersController::class,'getAllDonors']);
 Route::post('/findDonors',[UsersController::class,'findDonors']);
 Route::post('/getAllBloodType',[ConstantController::class,'getAllBloodType']);
-Route::post('/getAllCountries',[WorldController::class,'getAllCountries']);
-Route::post('/getAllStatesByCountry',[WorldController::class,'getAllStatesByCountry']);
-Route::post('/getAllCityByStates',[WorldController::class,'getAllCityByStates']);
+
+
+Route::post('/getAllCityByDistrict',[WorldController::class,'getAllCityByDistrict']);
+Route::post('/getAllDistrictByStates',[WorldController::class,'getAllDistrictByStates']);
+Route::post('/getAllStates',[WorldController::class,'getAllStates']);
+
 Route::post('/getAllFeed',[FeedController::class,'getAllFeed']);
 Route::post('/getFeedById',[FeedController::class,'getFeedById']);
 

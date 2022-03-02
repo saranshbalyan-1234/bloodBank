@@ -18,8 +18,8 @@ class CreateDonorsTable extends Migration
             $table->foreignId('user_id');
             $table->foreign('user_id')
             ->references('id')->on('users'); 
-            $table->integer('total_units_donated');
-            $table->string('is_active'); 
+            $table->integer('total_units_donated')->default(0);
+            $table->string('is_active')->default(1); 
             $table->tinyInteger('blood')->nullable();
             $table->tinyInteger('sdp')->nullable();
             $table->tinyInteger('ffp')->nullable();
@@ -27,7 +27,7 @@ class CreateDonorsTable extends Migration
             $table->tinyInteger('wbc')->nullable();
             $table->tinyInteger('vehicle')->nullable();
             $table->integer('can_travel_distance')->nullable();
-            $table->string('convt_time_int')->nullable();
+            $table->string('convt_time')->nullable();
             $table->tinyInteger('ready_emergency')->nullable();
             $table->timestamps();
         });
