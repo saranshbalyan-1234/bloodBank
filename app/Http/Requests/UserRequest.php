@@ -34,9 +34,9 @@ class UserRequest extends FormRequest
                 return [
                     'name'=>"required|regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
                     'email'=>'required|email|unique:users,email',
-                    'age'=>'required',
+                    // 'age'=>'required',
                     'gender'=>'required',
-                    'address'=>'required',
+                    // 'address'=>'required',
                     'city'=>'required',
                     'state'=>'required',
                     'district'=>'required',
