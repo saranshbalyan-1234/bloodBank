@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
-use App\Models\BeUser;
+// use App\Models\BeUser;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,7 +19,7 @@ class UsersController extends Controller
 {
     function store(UserRequest $request)
     {
-        $User =new BeUser();
+        $User =new User();
         $User->name = $request->name;
         $User->wo_do_so = $request->wo_do_so;
         $User->email = $request->email;
