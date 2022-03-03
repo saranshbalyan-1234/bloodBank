@@ -30,9 +30,11 @@ class UserRequest extends FormRequest
         $method = $arr[1]; // The controller method
     
         switch ($method) {
-            case 'register':
+            case 'store':
                 return [
                     'name'=>"required|regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
+                    'wo_do_so'=>"required|regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
+                    'phone' => "required|regex:/^([0-9]){10}$/;",
                     'email'=>'required|email|unique:users,email',
                     'age'=>'required',
                     'gender'=>'required',
