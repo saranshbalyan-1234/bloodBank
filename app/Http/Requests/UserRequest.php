@@ -36,9 +36,9 @@ class UserRequest extends FormRequest
                     'wo_do_so'=>"required|regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
                     'phone' => "required|regex:/^([0-9]){10}$/;",
                     'email'=>'required|email|unique:users,email',
-                    'age'=>'required',
+                    // 'age'=>'required',
                     'gender'=>'required',
-                    'address'=>'required',
+                    // 'address'=>'required',
                     'city'=>'required',
                     'state'=>'required',
                     'district'=>'required',
@@ -59,8 +59,8 @@ class UserRequest extends FormRequest
             case 'update':
                 return [
                     'id'=>'required',
-                    'name'=>"regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
-                    'email'=>'required|email|unique:users,email,'.Auth::user()->id,
+                    // 'name'=>"regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
+                    // 'email'=>'required|email|unique:users,email,'.Auth::user()->id,
                 ];
                 break;
 
