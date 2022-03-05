@@ -149,5 +149,36 @@ class UsersController extends Controller
     $user=User::find(Auth::user()->id)->with('request')->with('donor')->with('donation_history')->first();
     return response()->json(['requestData' => $user,"status"=>"success"]);
     }
+//email verification
+    public function sendVerificationEmail(Request $request)
+    {
+        if ($request->user()->hasVerifiedEmail()) {
+            return [
+                'message' => 'Already Verified'
+            ];
+        }
+
+        $request->user()->sendEmailVerificationNotification();
+
+        return ['status' => 'verification-link-sent'];
+    }
+
+    public function verify(EmailVerificationRequest $request)
+    {
+        if ($request->user()->hasVerifiedEmail()) {
+            return [
+                'message' => 'Email already verified'
+            ];
+        }
+
+        if ($request->user()->markEmailAsVerified()) {
+            event(new Verified($request->user()));
+        }
+
+        return [
+            'message'=>'Email has been verified'
+        ];
+    }
+
     
 }

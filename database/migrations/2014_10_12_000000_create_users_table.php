@@ -77,6 +77,7 @@ class CreateUsersTable extends Migration
 
             $table->tinyInteger('is_donor_active')->nullable();
             $table->tinyInteger('is_volunteer_active')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
 
             $table->timestamps();
         });

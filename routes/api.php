@@ -44,6 +44,10 @@ Route::get('/beuser/search/do_av_rdp/{do_av_rdp}',[BeUserController::class,'sear
 Route::get('/beuser/search/do_av_wbc/{do_av_wbc}',[BeUserController::class,'searchbyTypeDoWBC']);//search by wbc
 
 
+//verify email
+Route::post('email/verification-notification', [UsersController::class, 'sendVerificationEmail'])->middleware('auth:sanctum');
+Route::get('verify-email/{id}/{hash}', [UsersController::class, 'verify'])->name('verification.verify')->middleware('auth:sanctum');
+
 
 Route::post('/login',[UsersController::class,'login']);
 Route::post('/register',[UsersController::class,'register']);
