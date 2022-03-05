@@ -25,11 +25,13 @@ class CreateRequestDonorsTable extends Migration
             $table->string('district');
             $table->string('hospital_name');
             $table->bigInteger('hospital_phone');
+            $table->string('hospital_state');
             $table->string('hospital_city');
             $table->string('hospital_district');
             $table->string('blood_type');
             // $table->string('type_rh');
-            // $table->integer('unit');
+            $table->integer('unit');
+            $table->string('date_required');
             $table->foreignId('user_id');
             $table->foreign('user_id')
             ->references('id')->on('users')->onDelete('cascade'); 
