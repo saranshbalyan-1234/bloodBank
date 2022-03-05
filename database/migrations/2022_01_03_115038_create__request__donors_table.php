@@ -20,14 +20,13 @@ class CreateRequestDonorsTable extends Migration
             $table->integer('age');
             $table->string('gender');
             $table->bigInteger('phone');
-            $table->string('address');
             $table->string('city');
             $table->string('state');
+            $table->string('district');
             $table->string('hospital_name');
             $table->bigInteger('hospital_phone');
-            $table->string('hospital_address');
             $table->string('hospital_city');
-            $table->string('hospital_state');
+            $table->string('hospital_district');
             $table->string('blood_type');
             // $table->string('type_rh');
             // $table->integer('unit');
