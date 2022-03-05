@@ -10,7 +10,7 @@ class RequestDonorsController extends Controller
     function requestDonor(Request $req){
        
       $temp = collect($req->all());
-      $temp->put('user_id',Auth::user()->id);
+      $temp->put('user_id',$req->id);
       $request = RequestDonor::create($temp->toArray());
         return response()->json(['requestDonorsData' => $request,"status"=>"success"]);
         
