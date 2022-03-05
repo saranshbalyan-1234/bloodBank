@@ -59,8 +59,8 @@ class UserRequest extends FormRequest
             case 'update':
                 return [
                     'id'=>'required',
-                    'name'=>"regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
-                    'email'=>'required|email|unique:users,email,'.Auth::user()->id,
+                    // 'name'=>"regex:/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/",
+                    // 'email'=>'required|email|unique:users,email,'.Auth::user()->id,
                 ];
                 break;
 
