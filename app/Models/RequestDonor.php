@@ -11,7 +11,7 @@ class RequestDonor extends Model
     public $table = "request_donors";
      protected $fillable = [
         'name','email',
-'age','gender','blood_type','address','city','state','phone','hospital_address','hospital_city','hospital_state','hospital_phone','hospital_name','user_id'
+'age','gender','blood_type','district','city','state','phone','hospital_district','hospital_city','hospital_state','hospital_phone','hospital_name','user_id'
     ];
 
     public function getCreatedAtAttribute($date)
