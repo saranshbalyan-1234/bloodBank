@@ -67,11 +67,14 @@ Route::post('/getAllStates',[WorldController::class,'getAllStates']);
 Route::post('/getAllFeed',[FeedController::class,'getAllFeed']);
 Route::post('/getFeedById',[FeedController::class,'getFeedById']);
 
-// Route::group(['middleware'=>['auth:sanctum']],function () {
+
     Route::post('/getAllRequest',[UsersController::class,'getAllRequest']);
     Route::post('/getUserById',[UsersController::class,'getDonorById']);
     Route::post('/update',[UsersController::class,'update']);
-    Route::post('/logout',[UsersController::class,'logout']);
+   
+   Route::group(['middleware'=>['auth:sanctum']],function () {
+        Route::post('/logout',[UsersController::class,'logout']);
+        });
    
     Route::post('/addNotification',[NotificationController::class,'addNotification']);
     Route::post('/updateNotification',[NotificationController::class,'updateNotification']);
@@ -92,4 +95,4 @@ Route::post('/getFeedById',[FeedController::class,'getFeedById']);
     
     
 
-// });
+
