@@ -63,7 +63,14 @@ class UsersController extends Controller
         $User->is_volunteer_active = $request->is_volunteer_active;
 
         $User->save();
-        return $User;
+        $token = $User->createToken('authtoken');
+        
+        return response()->json(
+            [
+                'message'=>'User Registered',
+                'data'=> ['token' => $token->plainTextToken, 'user' => $User]
+            ]
+        );
     }
 
     // function register(UserRequest $req){
@@ -142,9 +149,11 @@ class UsersController extends Controller
        return "success";
     }
 
-    function getAllRequest(Request $req){
-    $user=RequestDonor::where(['user_id'=>$req->id])->get();
-    return response()->json(['requestData' => $user,"status"=>"success"]);
+
+    function getAllRequest(){
+    $user=User::find($req->id)->with('request')->first();
+    return response()->json(['requestData' => $user->request,"status"=>"success"]);
+
     }
 
     function getAllDetails(Request $req){
