@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\User;
 use App\Models\RequestDonor;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 // use App\Models\BeUser;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
