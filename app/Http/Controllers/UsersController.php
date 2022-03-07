@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Auth\Events\Verified;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 use App\Models\User;
+use App\Models\RequestDonor;
+
 // use App\Models\BeUser;
 
 use Illuminate\Support\Facades\Auth;
@@ -142,13 +142,14 @@ class UsersController extends Controller
        return "success";
     }
 
-    function getAllRequest(){
-    $user=User::find(Auth::user()->id)->with('request')->first();
-    return response()->json(['requestData' => $user->request,"status"=>"success"]);
+    function getAllRequest(Request $req){
+    $user=RequestDonor::where(['user_id'=>$req->id])->get();
+    return response()->json(['requestData' => $user,"status"=>"success"]);
     }
 
-    function getAllDetails(){
-    $user=User::find(Auth::user()->id)->with('request')->with('donor')->with('donation_history')->first();
+    function getAllDetails(Request $req){
+       
+    $user=User::find($req->id)->with('donor')->with('donation_history')->first();
     return response()->json(['requestData' => $user,"status"=>"success"]);
     }
 //email verification

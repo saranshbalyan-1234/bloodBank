@@ -54,5 +54,26 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_volunteer_active'
     
     ];
-
+  public function request()
+    {
+        return $this->hasMany(RequestDonor::class, 'user_id','id');
+    }
+     public function donor()
+    {
+        return $this->hasOne(Donor::class, 'user_id');
+    }
+ public function donation_history()
+    {
+        return $this->hasMany(DonorsHistory::class, 'user_id');
+    }
+    public function getCreatedAtAttribute($date)
+    {
+        $newDate=Carbon::parse($date)->addMinutes(330);
+        return Carbon::createFromFormat('Y-m-d H:i:s', $newDate)->format('d-m-Y h:i A');
+    }
+    public function getUpdatedAtAttribute($date)
+    {
+        $newDate=Carbon::parse($date)->addMinutes(330);
+        return Carbon::createFromFormat('Y-m-d H:i:s', $newDate)->format('d-m-Y h:i A');
+    } 
 }
