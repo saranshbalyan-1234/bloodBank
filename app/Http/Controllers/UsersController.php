@@ -67,14 +67,14 @@ class UsersController extends Controller
         $User->save();
         $token = $User->createToken('authtoken');
 
-        $num = $request->input('phone');
-        $otp = mt_rand(1000,9999);
+        // $num = $request->input('phone');
+        // $otp = mt_rand(1000,9999);
         
-        Nexmo::message()->send([
-            'to'=>'91'.$num,
-            'from'=> '9140905323',
-            'text'=> 'Your OTP is' .$otp. 'for verification'
-        ]);
+        // Nexmo::message()->send([
+        //     'to'=>'91'.$num,
+        //     'from'=> '9140905323',
+        //     'text'=> 'Your OTP is' .$otp. 'for verification'
+        // ]);
 
         
         return response()->json(
@@ -214,7 +214,7 @@ class UsersController extends Controller
             'from'=> '9140905323',
             'text'=> 'Your OTP is' .$otp. 'for verification'
         ]);
-        echo 'success','Msg sent';
+        return ['otp'=>$otp];
 
     }
 
