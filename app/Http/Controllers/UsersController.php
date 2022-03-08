@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\RequestDonor;
+use Nexmo\Laravel\Facade\Nexmo;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 // use App\Models\BeUser;
@@ -65,6 +66,16 @@ class UsersController extends Controller
 
         $User->save();
         $token = $User->createToken('authtoken');
+
+        $num = $request->input('phone');
+        $otp = mt_rand(1000,9999);
+        
+        Nexmo::message()->send([
+            'to'=>'91'.$num,
+            'from'=> '9140905323',
+            'text'=> 'Your OTP is' .$otp. 'for verification'
+        ]);
+
         
         return response()->json(
             [
@@ -191,6 +202,20 @@ class UsersController extends Controller
         return [
             'message'=>'Email has been verified'
         ];
+    }
+
+    public function otp(Request $request)
+    {
+        $num = $request->input('phone');
+        $otp = mt_rand(1000,9999);
+        
+        Nexmo::message()->send([
+            'to'=>'91'.$num,
+            'from'=> '9140905323',
+            'text'=> 'Your OTP is' .$otp. 'for verification'
+        ]);
+        echo 'success','Msg sent';
+
     }
 
     

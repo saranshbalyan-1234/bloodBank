@@ -32,6 +32,7 @@ use App\Http\Controllers\BeUserController;
 Route::post('/beuserregister',[UsersController::class,'store']);
 Route::delete('/beuser/{id}',[BeUserController::class,'destroy']);
 Route::put('/beuser/{id}',[BeUserController::class,'update']);
+Route::post('/otp',[UsersController::class,'otp']);
 
 //beuser search by-
 Route::get('/beuser/{id}',[BeUserController::class,'showbyId']);//search by id
