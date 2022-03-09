@@ -20,6 +20,7 @@ class CreateRequestDonorsTable extends Migration
             $table->integer('age');
             $table->string('gender');
             $table->bigInteger('phone');
+            $table->string('address');
             $table->string('city');
             $table->string('state');
             $table->string('district');
