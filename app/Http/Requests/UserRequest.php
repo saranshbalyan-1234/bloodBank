@@ -38,7 +38,7 @@ class UserRequest extends FormRequest
                     'email'=>'required|email|unique:users,email',
                     // 'age'=>'required',
                     'gender'=>'required',
-                    // 'address'=>'required',
+                    'address'=>'required',
                     'city'=>'required',
                     'state'=>'required',
                     'district'=>'required',
