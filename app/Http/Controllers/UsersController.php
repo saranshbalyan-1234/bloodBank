@@ -163,8 +163,8 @@ class UsersController extends Controller
 
 
     function getAllRequest(Request $req){
-    $user=User::find($req->id)->with('request')->first();
-    return response()->json(['requestData' => $user->request,"status"=>"success"]);
+    $user=RequestDonor::where(['user_id' => $req->id]);
+    return response()->json(['requestData' => $user,"status"=>"success"]);
 
     }
 
