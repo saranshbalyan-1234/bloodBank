@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\RaisedRequest;
+use Illuminate\Support\Facades\DB;
 
 class RaisedRequestController extends Controller
 {
@@ -11,7 +12,11 @@ class RaisedRequestController extends Controller
     public function index()
     {
         $data = RaisedRequest::all();
-        return $data;
+        $temp = DB::table('raised_requests')
+        ->join('users','raised_requests.requester_id','=','users.id')
+        ->select('users.*')
+        ->get();
+        return $temp;
 
     }  
 
