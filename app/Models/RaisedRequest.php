@@ -11,7 +11,7 @@ class RaisedRequest extends Model
 
     protected $fillable = [
         'requester_id',
-        'donor_id'
-    
+        'donor_id',
+        'status'
     ];
 }
