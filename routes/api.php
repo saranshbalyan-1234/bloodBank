@@ -11,6 +11,8 @@ use App\Http\Controllers\FeedController;
 use App\Http\Controllers\UserNotificationController;
 use App\Http\Controllers\RequestDonorsController;
 use App\Http\Controllers\BeUserController;
+use App\Http\Controllers\RaisedRequestController;
+
 
 
 /*
@@ -23,6 +25,9 @@ use App\Http\Controllers\BeUserController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::get('raisedlist',[RaisedRequestController::class,'index']);//search by id
+Route::post('/addraisedrequest',[RaisedRequestController::class,'store']);
 
 
 //beuser routes
