@@ -63,7 +63,7 @@ Route::post('/deleteUser',[UsersController::class,'delete']);
 
 Route::post('/findRequest',[RequestDonorsController::class,'findRequest']);
 Route::post('/getAllDonors',[UsersController::class,'getAllDonors']);
-Route::post('/findDonors',[UsersController::class,'findDonors']);
+
 Route::post('/getAllBloodType',[ConstantController::class,'getAllBloodType']);
 
 
@@ -81,6 +81,7 @@ Route::post('/getFeedById',[FeedController::class,'getFeedById']);
    
    Route::group(['middleware'=>['auth:sanctum']],function () {
         Route::post('/logout',[UsersController::class,'logout']);
+        Route::post('/findDonors',[UsersController::class,'findDonors']);
         });
    
     Route::post('/addNotification',[NotificationController::class,'addNotification']);

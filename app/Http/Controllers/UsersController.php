@@ -128,7 +128,7 @@ class UsersController extends Controller
         if($req->state=='All') $temp->forget('state'); 
         // $temp->put('created_at','<=',$date);
         //  $temp->put('is_donor_active','=',1);
-            $user= User::where($temp->toArray())->get();
+            $user= User::where($temp->toArray())->with('status')->get();
             return response()->json(['donorsData' => $user,"status"=>"success"]);
     }
     

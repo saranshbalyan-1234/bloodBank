@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -62,6 +63,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(Donor::class, 'user_id');
     }
+  public function status()
+    {
+        return $this->hasOne(RaisedRequest::class, 'donor_id','id')->ofMany([],function ($query) {
+            $query->where('requester_id', '=', Auth::user()->id);
+        });
+    }
+
  public function donation_history()
     {
         return $this->hasMany(DonorsHistory::class, 'user_id');
