@@ -34,5 +34,12 @@ class RaisedRequestController extends Controller
                 'data'=>$raised
             ]
             );
-    }  
+    }
+    
+     function update(Request $req){
+        $user = RaisedRequest::find($req->id);
+        $temp = collect($req->all());
+        $user->update($temp->toArray());
+        return response()->json(['updatedData' => $user,"status"=>"success"]);
+    }
 }
