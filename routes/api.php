@@ -28,7 +28,7 @@ use App\Http\Controllers\RaisedRequestController;
 
 Route::get('raisedlist',[RaisedRequestController::class,'index']);//search by id
 Route::post('/addraisedrequest',[RaisedRequestController::class,'store']);
-Route::put('/updateraisedrequest',[RaisedRequestController::class,'update']);
+Route::put('/updateraisedrequest/{id}',[RaisedRequestController::class,'update']);
 
 
 //beuser routes
