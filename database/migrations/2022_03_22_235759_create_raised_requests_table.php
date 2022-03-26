@@ -18,6 +18,7 @@ class CreateRaisedRequestsTable extends Migration
             $table->string('requester_id');
             $table->string('donor_id');
             $table->string('status');
+            $table->string('donated');
             $table->timestamps();
         });
     }
