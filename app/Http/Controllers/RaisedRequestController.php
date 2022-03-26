@@ -14,7 +14,7 @@ class RaisedRequestController extends Controller
         $data = RaisedRequest::all();
         $temp = DB::table('raised_requests')
         ->join('users','raised_requests.requester_id','=','users.id')
-        ->select('users.*')
+        ->select('users.*','raised_requests.*')
         ->get();
         return $temp;
 
