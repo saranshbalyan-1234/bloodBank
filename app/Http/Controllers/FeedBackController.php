@@ -11,15 +11,17 @@ class FeedBackController extends Controller
 {
     function index()
     {
-        $data = FeedBack::all();
+        $data = FeedBack::with('user')->get();
         return $data;
     }
 
     function store(Request $request)
     {
         $fb =new Feedback();
-        $fb->raised_requests_id = $request->raised_requests_id;
         $fb->description = $request->description;
+        $fb->user_id = $request->user_id;
         $fb->save();
+
+        return $fb;
     }
 }

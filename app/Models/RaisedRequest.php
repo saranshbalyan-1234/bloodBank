@@ -15,4 +15,5 @@ class RaisedRequest extends Model
         'status',
         'donated'
     ];
+ 
 }

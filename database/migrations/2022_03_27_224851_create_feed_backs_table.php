@@ -15,7 +15,9 @@ class CreateFeedBacksTable extends Migration
     {
         Schema::create('feed_backs', function (Blueprint $table) {
             $table->id();
-            $table->string("raised_requests_id");
+            // $table->string("raised_requests_id");
+            $table->string("user_id");
+
             $table->string("description");
             $table->timestamps();
         });
