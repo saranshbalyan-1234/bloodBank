@@ -12,6 +12,8 @@ use App\Http\Controllers\UserNotificationController;
 use App\Http\Controllers\RequestDonorsController;
 use App\Http\Controllers\BeUserController;
 use App\Http\Controllers\RaisedRequestController;
+use App\Http\Controllers\FeedBackController;
+
 
 
 
@@ -25,6 +27,10 @@ use App\Http\Controllers\RaisedRequestController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//feedbackroutes
+Route::post('/addfeedback',[FeedbackController::class,'store']);
+Route::get('/feedback',[FeedbackController::class,'index']);//search by id
+
 
 Route::get('raisedlist',[RaisedRequestController::class,'index']);//search by id
 Route::post('/addraisedrequest',[RaisedRequestController::class,'store']);
