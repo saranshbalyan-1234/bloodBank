@@ -220,39 +220,29 @@ class UsersController extends Controller
 
     }
 
-    public function reset(Request $request)
+    public function reset(Request $req)
     {
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => ['required', 'confirmed', RulesPassword::defaults()],
-        ]);
-
-        $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user) use ($request) {
-                $user->forceFill([
-                    'password' => Hash::make($request->password),
-                    'remember_token' => Str::random(60),
-                ])->save();
-
-                $user->tokens()->delete();
-
-                event(new PasswordReset($user));
-            }
-        );
-
-        if ($status == Password::PASSWORD_RESET) {
-            return response([
-                'message'=> 'Password reset successfully'
-            ]);
-        }
-
-        return response([
-            'message'=> __($status)
-        ], 500);
-
-    }
-
+        $user = User::where(['phone' => $req->phone])->first();
+        $temp = collect($req->all());
+        $temp->forget('password');
+        $temp->put('password', Hash::make($req->password));
+        $user->update($temp->toArray());
+        return response()->json(['updatedData' => $user,"status"=>"password updated successfully"]);
     
+}
+
+public function resetpasswordotp(Request $request)
+{
+    $num = $request->input('phone');
+    $otp = mt_rand(1000,9999);
+    
+    Nexmo::message()->send([
+        'to'=>'91'.$num,
+        'from'=> '9140905323',
+        'text'=> 'Your OTP is' .$otp. 'for password reset'
+    ]);
+    return ['otp'=>$otp];
+
+}
+
 }

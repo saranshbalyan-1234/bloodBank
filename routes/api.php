@@ -47,6 +47,8 @@ Route::delete('/beuser/{id}',[BeUserController::class,'destroy']);
 Route::put('/beuser/{id}',[BeUserController::class,'update']);
 Route::post('/otp',[UsersController::class,'otp']);
 Route::post('/resetpassowrd',[UsersController::class,'reset']);
+Route::post('/resetpasswordotp',[UsersController::class,'resetpasswordotp']);
+
 
 
 //beuser search by-
