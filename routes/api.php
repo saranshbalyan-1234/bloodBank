@@ -94,7 +94,7 @@ Route::post('/getFeedById',[FeedController::class,'getFeedById']);
         Route::post('/logout',[UsersController::class,'logout']);
                    Route::post('/findDonors',[UsersController::class,'findDonors']);
         });
-                   Route::post('/findDonorss',[UsersController::class,'findDonors']);
+                   Route::post('/findDonorss',[UsersController::class,'findDonorss']);
     Route::post('/addNotification',[NotificationController::class,'addNotification']);
     Route::post('/updateNotification',[NotificationController::class,'updateNotification']);
     Route::post('/getAllNotification',[NotificationController::class,'getAllNotification']);
