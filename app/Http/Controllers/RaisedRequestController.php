@@ -45,4 +45,10 @@ class RaisedRequestController extends Controller
         $user->update($temp->toArray());
         return response()->json(['updatedData' => $user,"status"=>"success"]);
     }
+    function updateTwo(Request $req){
+        $request = RaisedRequest::where(['donor_id' => $req->donor_id,'requester_id' => $req->requester_id])->first();
+        $request->status=$req->status;
+        $request->save();
+        return response()->json(['updatedData' => $request,"status"=>"success"]);
+    }
 }

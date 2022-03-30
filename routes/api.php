@@ -35,6 +35,7 @@ Route::get('/feedback',[FeedbackController::class,'index']);//search by id
 Route::get('raisedlist',[RaisedRequestController::class,'index']);//search by id
 Route::post('/addraisedrequest',[RaisedRequestController::class,'store']);
 Route::post('/updateraisedrequest',[RaisedRequestController::class,'update']);
+Route::post('/updateraisedrequest2',[RaisedRequestController::class,'updateTwo']);
 
 
 //beuser routes
@@ -45,6 +46,8 @@ Route::post('/beuserregister',[UsersController::class,'store']);
 Route::delete('/beuser/{id}',[BeUserController::class,'destroy']);
 Route::put('/beuser/{id}',[BeUserController::class,'update']);
 Route::post('/otp',[UsersController::class,'otp']);
+Route::post('/resetpassowrd',[UsersController::class,'reset']);
+
 
 //beuser search by-
 Route::get('/beuser/{id}',[BeUserController::class,'showbyId']);//search by id
