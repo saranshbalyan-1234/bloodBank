@@ -37,6 +37,7 @@ class UsersController extends Controller
         $User->city = $request->city;
         $User->district = $request->district;
         $User->state = $request->state;
+        $User->pincode = $request->pincode;
         $User->blood_type = $request->blood_type;
         $User->do_av_blood = $request->do_av_blood;
         $User->do_av_sdp = $request->do_av_sdp;

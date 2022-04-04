@@ -30,6 +30,8 @@ class CreateUsersTable extends Migration
             $table->string('city');
             $table->string('district');
             $table->string('state');
+            $table->integer('pincode');
+
 
             $table->string('blood_type')->nullable();
 
