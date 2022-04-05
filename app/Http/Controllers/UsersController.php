@@ -126,20 +126,34 @@ class UsersController extends Controller
     function findDonors(UserRequest $req){
      
         $temp = collect($req->all());
-        if($req->blood_type=='All')  $temp->forget('blood_type'); 
-        if($req->city=='All') $temp->forget('city'); 
-        if($req->state=='All') $temp->forget('state'); 
- 
+
+        if($req->blood_type=='All'||$req->blood_type==''||$req->blood_type==null)  $temp->forget('blood_type'); 
+        if($req->city=='All'||$req->city==''||$req->city==null) $temp->forget('city'); 
+        if($req->state=='All'||$req->state==''||$req->state==null) $temp->forget('state'); 
+        if($req->district=='All'||$req->district==''||$req->district==null) $temp->forget('district'); 
+        
+        if($req->pincode && $req->pincode!=''||$req->pincode!==null){
+          $req->district&& $temp->forget('district'); 
+          $req->city&& $temp->forget('city'); 
+          $req->state&& $temp->forget('state'); 
+        }
+   
             $user= User::where($temp->toArray())->with('status')->get();
             return response()->json(['donorsData' => $user,"status"=>"success"]);
     }
      function findDonorss(UserRequest $req){
      
         $temp = collect($req->all());
-        if($req->blood_type=='All')  $temp->forget('blood_type'); 
-        if($req->city=='All') $temp->forget('city'); 
-        if($req->state=='All') $temp->forget('state'); 
- 
+        if($req->blood_type=='All'||$req->blood_type==''||$req->blood_type==null)  $temp->forget('blood_type'); 
+        if($req->city=='All'||$req->city==''||$req->city==null) $temp->forget('city'); 
+        if($req->state=='All'||$req->state==''||$req->state==null) $temp->forget('state'); 
+        if($req->district=='All'||$req->district==''||$req->district==null) $temp->forget('district'); 
+        
+        if($req->pincode && $req->pincode!=''||$req->pincode!==null){
+          $req->district&& $temp->forget('district'); 
+          $req->city&& $temp->forget('city'); 
+          $req->state&& $temp->forget('state'); 
+        }
             $user= User::where($temp->toArray())->get();
             return response()->json(['donorsData' => $user,"status"=>"success"]);
     }
