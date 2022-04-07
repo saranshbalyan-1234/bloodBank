@@ -142,12 +142,12 @@ class UsersController extends Controller
             return response()->json(['donorsData' => $user,"status"=>"success"]);
     }
      function findDonorss(UserRequest $req){
-     
         $temp = collect($req->all());
-        if($req->blood_type=='All'||$req->blood_type==''||$req->blood_type==null)  $temp->forget('blood_type'); 
+        if($req->blood_type=='All'||$req->blood_type==''||$req->blood_type==null) $temp->forget('blood_type'); 
         if($req->city=='All'||$req->city==''||$req->city==null) $temp->forget('city'); 
         if($req->state=='All'||$req->state==''||$req->state==null) $temp->forget('state'); 
         if($req->district=='All'||$req->district==''||$req->district==null) $temp->forget('district'); 
+        if($req->pincode=='All'||$req->pincode==''||$req->pincode==null) $temp->forget('pincode'); 
         
         if($req->pincode && $req->pincode!=''||$req->pincode!==null){
           $req->district&& $temp->forget('district'); 
