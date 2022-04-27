@@ -114,13 +114,14 @@ class UsersController extends Controller
     }
 
     function getDonorById(UserRequest $req){
-       if(Auth::user()->id == $req->id){
+        // return Auth::user()->id;
+    //    if(Auth::user()->id == $req->id){
         $user= User::find($req->id);
         return response()->json(['usersData' => $user,"status"=>"success"]);
-       }
-       else{
-        return response()->json(['errors' => ['message'=>'Unauthenticated'],"status"=>"exception"]);
-       }
+    //    }
+    //    else{
+    //     return response()->json(['errors' => ['message'=>'Unauthenticated'],"status"=>"exception"]);
+    //    }
     }
 
     function findDonors(UserRequest $req){
