@@ -115,7 +115,7 @@ class UsersController extends Controller
 
     function getDonorById(UserRequest $req){
         // return Auth::user()->id;
-    //    if(Auth::user()->id == $req->id){
+    //    if(Auth::user()->id == $req->id){1
         $user= User::find($req->id);
         return response()->json(['usersData' => $user,"status"=>"success"]);
     //    }
