@@ -20,6 +20,7 @@ class FeedBackController extends Controller
         $fb =new Feedback();
         $fb->description = $request->description;
         $fb->user_id = $request->user_id;
+        $fb->raised_id = $request->raised_id;
         $fb->save();
 
         return $fb;

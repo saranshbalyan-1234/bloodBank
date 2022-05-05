@@ -10,7 +10,7 @@ class FeedBack extends Model
     use HasFactory;
 
          protected $fillable = [
-        'description','user_id'
+        'description','user_id','raised_id'
     ];
     public function user()
     {
