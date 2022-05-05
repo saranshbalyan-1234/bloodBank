@@ -29,7 +29,9 @@ use App\Http\Controllers\FeedBackController;
 */
 //feedbackroutes
 Route::post('/addfeedback',[FeedbackController::class,'store']);
+Route::post('/getFeedBackDetails',[FeedbackController::class,'getFeedBackDetails']);
 Route::get('/feedback',[FeedbackController::class,'index']);//search by id
+
 
 
 Route::get('raisedlist',[RaisedRequestController::class,'index']);//search by id

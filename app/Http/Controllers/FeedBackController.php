@@ -14,7 +14,10 @@ class FeedBackController extends Controller
         $data = FeedBack::with('user')->get();
         return $data;
     }
-
+function getFeedBackDetails(Request $req){
+    $data = FeedBack::where(['raised_id' => $req->raised_id,'user_id'=>$req->user_id])->get();
+    return $data;
+}
     function store(Request $request)
     {
         $fb =new Feedback();
