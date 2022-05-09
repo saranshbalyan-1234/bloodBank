@@ -64,6 +64,7 @@ class UsersController extends Controller
         $User->purpose = $request->purpose;
         $User->role = $request->role;
         $User->password = Hash::make($request->password);
+        $User->blocked = $request->blocked;
         $User->is_donor_active = $request->is_donor_active;
         $User->is_volunteer_active = $request->is_volunteer_active;
 

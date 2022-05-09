@@ -51,6 +51,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'volunteer_other',
         'purpose',
         'role',
+        'blocked',
         'password',
         'pincode',
         'is_donor_active',
