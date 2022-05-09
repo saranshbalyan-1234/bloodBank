@@ -69,7 +69,7 @@ class UsersController extends Controller
 
         $User->save();
         $token = $User->createToken('authtoken');
-
+        $logintoken=  $user->createToken($user->name)->plainTextToken; 
         // $num = $request->input('phone');
         // $otp = mt_rand(1000,9999);
         
@@ -83,7 +83,7 @@ class UsersController extends Controller
         return response()->json(
             [
                 'message'=>'User Registered',
-                'data'=> ['token' => $token->plainTextToken, 'user' => $User]
+                'data'=> ['token' => $token->plainTextToken, 'loginToken' => $loginToken,'user' => $User]
             ]
         );
     }
