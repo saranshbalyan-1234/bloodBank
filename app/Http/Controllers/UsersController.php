@@ -201,6 +201,11 @@ class UsersController extends Controller
     $user=User::find($req->id)->with('donor')->with('donation_history')->first();
     return response()->json(['requestData' => $user,"status"=>"success"]);
     }
+
+    function volunteeractive(){
+        $vol=User::where('is_volunteer_active',1)->get();
+        return response()->json(['volunteer'=> $vol]);
+    }
 //email verification
     public function sendVerificationEmail(Request $request)
     {
@@ -274,5 +279,7 @@ public function verifyData(Request $req){
     $temp = collect($req->all());
   return User::where($temp->toArray())->get();
 }
+
+
 
 }
