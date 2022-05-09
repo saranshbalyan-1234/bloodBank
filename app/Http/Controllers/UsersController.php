@@ -69,7 +69,7 @@ class UsersController extends Controller
 
         $User->save();
         $token = $User->createToken('authtoken');
-        $logintoken=  $user->createToken($user->name)->plainTextToken; 
+        $logintoken=  $user->createToken($User->name)->plainTextToken; 
         // $num = $request->input('phone');
         // $otp = mt_rand(1000,9999);
         
@@ -87,8 +87,7 @@ class UsersController extends Controller
             ]
         );
     }
-
-    // function register(UserRequest $req){
+// function register(UserRequest $req){
     //     // return $req->all();
     //     $temp = collect($req->all());
     //     $temp->put('password', Hash::make($req->password));
