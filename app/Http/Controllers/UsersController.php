@@ -69,7 +69,7 @@ class UsersController extends Controller
 
         $User->save();
         $token = $User->createToken('authtoken');
-        $logintoken=  $user->createToken($User->name)->plainTextToken; 
+        $loginToken=  $User->createToken($User->name)->plainTextToken; 
         // $num = $request->input('phone');
         // $otp = mt_rand(1000,9999);
         
@@ -268,6 +268,10 @@ public function resetpasswordotp(Request $request)
     ]);
     return ['otp'=>$otp];
 
+}
+public function verifyData(Request $req){
+    $temp = collect($req->all());
+  return User::where($temp->toArray())->get();
 }
 
 }
