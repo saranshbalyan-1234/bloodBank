@@ -16,5 +16,14 @@ class FeedBack extends Model
     {
         return $this->hasOne(User::class,'id','user_id');
     }
-  
+  public function getCreatedAtAttribute($date)
+{
+    $newDate=Carbon::parse($date)->addMinutes(330);
+    return Carbon::createFromFormat('Y-m-d H:i:s', $newDate)->format('d-m-Y h:i A');
+}
+public function getUpdatedAtAttribute($date)
+{
+    $newDate=Carbon::parse($date)->addMinutes(330);
+    return Carbon::createFromFormat('Y-m-d H:i:s', $newDate)->format('d-m-Y h:i A');
+} 
 }
