@@ -36,15 +36,11 @@ Route::get('/feedback',[FeedbackController::class,'index']);//search by id
 
 
 Route::post('/addquery',[QueryController::class,'store']);
-Route::post('/updatequery/{id}',[QueryController::class,'update']);
+Route::post('/updatequery',[QueryController::class,'update']);
 Route::post('/getallqueries',[QueryController::class,'getAllQuery']);
-Route::post('/getquerybyid/{id}',[QueryController::class,'getQueryById']);
-Route::post('/deletequery/{id}',[QueryController::class,'deleteQueryById']);
-
-
-
-
-
+Route::post('/getquerybyid',[QueryController::class,'getQueryById']);
+Route::post('/deletequery',[QueryController::class,'deleteQueryById']);
+Route::post('/getQueryByUser',[QueryController::class,'getQueryByUser']);
 
 
 

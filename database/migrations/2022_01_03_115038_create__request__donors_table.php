@@ -30,6 +30,8 @@ class CreateRequestDonorsTable extends Migration
             $table->string('hospital_city');
             $table->string('hospital_district');
             $table->string('blood_type');
+            $table->string('fname')->nullable();
+            $table->string('path')->nullable();
             // $table->string('type_rh');
             $table->integer('unit');
             $table->string('date_required');

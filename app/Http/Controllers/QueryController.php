@@ -26,6 +26,10 @@ class QueryController extends Controller
       return Query::find($req->id);     
     }
 
+    function getQueryByUser(Request $req){
+      return Query::where(['user_id' => $req->user_id])->get();  
+    }
+
     function deleteQueryById(Request $req){
         $temp = Query::find($req->id);
         $temp->delete();

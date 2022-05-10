@@ -10,7 +10,7 @@ class RequestDonor extends Model
     use HasFactory;
     public $table = "request_donors";
      protected $fillable = [
-        'name','email',
+        'name','email','fname','path'
 'age','gender','blood_type','district','unit','city','address','state','date_required','phone','hospital_district','hospital_city','hospital_state','hospital_phone','hospital_name','user_id'
     ];
 
