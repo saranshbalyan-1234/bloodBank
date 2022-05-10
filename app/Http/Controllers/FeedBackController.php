@@ -24,6 +24,8 @@ function getFeedBackDetails(Request $req){
         $fb->description = $request->description;
         $fb->user_id = $request->user_id;
         $fb->raised_id = $request->raised_id;
+        $fb->comment = $request->comment;
+        
         $fb->save();
 
         return $fb;
