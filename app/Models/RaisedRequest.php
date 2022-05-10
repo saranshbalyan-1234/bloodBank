@@ -13,7 +13,8 @@ class RaisedRequest extends Model
         'requester_id',
         'donor_id',
         'status',
-        'donated'
+        'donated',
+        'remark'
     ];
  
 }
