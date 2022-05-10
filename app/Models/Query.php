@@ -11,6 +11,7 @@ class Query extends Model
 
     protected $fillable = [
         'user_id',
-        'query',
+        'question',
+        'answer'
     ];
 }
