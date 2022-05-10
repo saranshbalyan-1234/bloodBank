@@ -13,6 +13,8 @@ use App\Http\Controllers\RequestDonorsController;
 use App\Http\Controllers\BeUserController;
 use App\Http\Controllers\RaisedRequestController;
 use App\Http\Controllers\FeedBackController;
+use App\Http\Controllers\QueryController;
+
 
 
 
@@ -31,6 +33,18 @@ use App\Http\Controllers\FeedBackController;
 Route::post('/addfeedback',[FeedbackController::class,'store']);
 Route::post('/getFeedBackDetails',[FeedbackController::class,'getFeedBackDetails']);
 Route::get('/feedback',[FeedbackController::class,'index']);//search by id
+
+
+Route::post('/addquery',[QueryController::class,'store']);
+Route::post('/updatequery/{id}',[QueryController::class,'update']);
+Route::post('/getallqueries',[QueryController::class,'getAllQuery']);
+Route::post('/getquerybyid/{id}',[QueryController::class,'getQueryById']);
+Route::post('/deletequery/{id}',[QueryController::class,'deleteQueryById']);
+
+
+
+
+
 
 
 
