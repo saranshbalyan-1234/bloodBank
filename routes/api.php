@@ -14,6 +14,8 @@ use App\Http\Controllers\BeUserController;
 use App\Http\Controllers\RaisedRequestController;
 use App\Http\Controllers\FeedBackController;
 use App\Http\Controllers\QueryController;
+use App\Http\Controllers\FileController;
+
 
 
 
@@ -126,6 +128,8 @@ Route::post('/getFeedById',[FeedController::class,'getFeedById']);
     Route::post('/requestDonation',[RequestDonorsController::class,'requestDonor']);
     Route::post('/deleteRequest',[RequestDonorsController::class,'deleteRequest']);
     Route::post('/getAllDetails',[UsersController::class,'getAllDetails']);
+
+    Route::post('/saveFile',[FileController::class,'store']);
    
     
     
