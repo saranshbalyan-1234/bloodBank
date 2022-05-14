@@ -21,9 +21,9 @@ class FeedBack extends Model
     $newDate=Carbon::parse($date)->addMinutes(330);
     return Carbon::createFromFormat('Y-m-d H:i:s', $newDate)->format('d-m-Y h:i A');
 }
-public function getUpdatedAtAttribute($date)
-{
-    $newDate=Carbon::parse($date)->addMinutes(330);
-    return Carbon::createFromFormat('Y-m-d H:i:s', $newDate)->format('d-m-Y h:i A');
-} 
+// public function getUpdatedAtAttribute($date)
+// {
+//     $newDate=Carbon::parse($date)->addMinutes(330);
+//     return Carbon::createFromFormat('Y-m-d H:i:s', $newDate)->format('d-m-Y h:i A');
+// } 
 }
