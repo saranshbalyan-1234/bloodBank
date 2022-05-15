@@ -15,6 +15,7 @@ use App\Http\Controllers\RaisedRequestController;
 use App\Http\Controllers\FeedBackController;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\SupportController;
 
 
 
@@ -31,6 +32,15 @@ use App\Http\Controllers\FileController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+//SupportDemoroutes
+Route::post('/addsupport',[SupportController::class,'store']);
+Route::post('/getallsupport',[SupportController::class,'getAllSupport']);
+Route::post('/updatesupport',[SupportController::class,'update']);
+Route::post('/getsupportbyid',[SupportController::class,'getSupportById']);
+Route::post('/deletesupport',[SupportController::class,'deleteSupportById']);
+
+
 //feedbackroutes
 Route::post('/addfeedback',[FeedbackController::class,'store']);
 Route::post('/getFeedBackDetails',[FeedbackController::class,'getFeedBackDetails']);

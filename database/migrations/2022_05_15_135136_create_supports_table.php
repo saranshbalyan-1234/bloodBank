@@ -2,7 +2,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-class CreateFilesTable extends Migration
+class CreateSupportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -11,13 +11,13 @@ class CreateFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('files', function (Blueprint $table) {
+        Schema::create('supports', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->bigInteger('phone');
+            $table->string('description');
             $table->timestamps();
-            $table->foreignId('request_donors_id');
-            $table->foreign('request_donors_id')
-            ->references('id')->on('request_donors');
-            $table->longText('file');
         });
     }
     /**
@@ -27,6 +27,6 @@ class CreateFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('files');
+        Schema::dropIfExists('supports');
     }
 }
