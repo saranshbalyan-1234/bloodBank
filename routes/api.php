@@ -33,6 +33,11 @@ use App\Http\Controllers\SupportController;
 |
 */
 
+//firebase notification
+Route::post('/push-notificaiton', [NotificationController::class, 'index']);
+Route::post('/store-token', [NotificationController::class, 'storeToken']);
+Route::post('/send-notification', [NotificationController::class, 'sendNotification']);
+
 //SupportDemoroutes
 Route::post('/addsupport',[SupportController::class,'store']);
 Route::post('/getallsupport',[SupportController::class,'getAllSupport']);

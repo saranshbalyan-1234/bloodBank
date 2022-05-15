@@ -52,6 +52,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'purpose',
         'role',
         'blocked',
+        'fcm_token'
         'password',
         'pincode',
         'is_donor_active',

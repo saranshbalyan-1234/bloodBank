@@ -68,6 +68,7 @@ class CreateUsersTable extends Migration
             $table->string('volunteer_admin')->nullable();
             $table->string('volunteer_pick')->nullable();
             $table->string('volunteer_other')->nullable();
+            $table->string('fcm_token')->nullable();
 
 
             $table->string('purpose')->nullable();
