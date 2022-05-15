@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FileController extends Controller
 {
@@ -13,7 +14,11 @@ class FileController extends Controller
     }
 
     function getAllFileController(){
-      return File::all();     
+      $data= File::all();
+      $users = DB::table('files')
+      ->join('request_donors','files.request_donors_id', '=' 'request_donors.id')
+      ->select('files.*','request_donors.*')->get();
+      return $users;
     }
 
     function update(Request $req){
