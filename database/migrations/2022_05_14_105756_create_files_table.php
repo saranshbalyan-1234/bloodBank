@@ -16,7 +16,7 @@ class CreateFilesTable extends Migration
             $table->timestamps();
             $table->foreignId('request_donors_id');
             $table->foreign('request_donors_id')
-            ->references('id')->on('request_donors');
+            ->references('id')->on('request_donors')->onDelete('cascade');
             $table->longText('file');
         });
     }
