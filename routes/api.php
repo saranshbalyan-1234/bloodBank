@@ -140,6 +140,8 @@ Route::post('/getFeedById',[FeedController::class,'getFeedById']);
     Route::post('/getAllDetails',[UsersController::class,'getAllDetails']);
 
     Route::post('/saveFile',[FileController::class,'store']);
+    Route::post('/getallfile',[FileController::class,'getAllFileController']);
+    Route::post('/getfilebyid',[FileController::class,'getFileControllerById']);
    
     
     
