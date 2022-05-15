@@ -16,7 +16,7 @@ class FileController extends Controller
     function getAllFileController(){
       $data= File::all();
       $users = DB::table('files')
-      ->join('request_donors','files.request_donors_id', '=' 'request_donors.id')
+      ->join('request_donors','files.request_donors_id', '=', 'request_donors.id')
       ->select('files.*','request_donors.*')->get();
       return $users;
     }

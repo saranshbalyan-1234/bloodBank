@@ -16,6 +16,8 @@ use App\Http\Controllers\FeedBackController;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\SupportController;
+use App\Http\Controllers\FirebaseNotificationController;
+
 
 
 
@@ -34,9 +36,9 @@ use App\Http\Controllers\SupportController;
 */
 
 //firebase notification
-Route::post('/push-notificaiton', [NotificationController::class, 'index']);
-Route::post('/store-token', [NotificationController::class, 'storeToken']);
-Route::post('/send-notification', [NotificationController::class, 'sendNotification']);
+Route::post('/push-notificaiton', [FirebaseNotificationController::class, 'index']);
+Route::post('/store-token', [FirebaseNotificationController::class, 'storeToken']);
+Route::post('/send-notification', [FirebaseNotificationController::class, 'sendNotification']);
 
 //SupportDemoroutes
 Route::post('/addsupport',[SupportController::class,'store']);
