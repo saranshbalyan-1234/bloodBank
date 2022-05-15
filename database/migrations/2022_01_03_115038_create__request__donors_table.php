@@ -35,6 +35,7 @@ class CreateRequestDonorsTable extends Migration
             // $table->string('type_rh');
             $table->integer('unit');
             $table->string('date_required');
+            $table->string('document');
             $table->foreignId('user_id');
             $table->foreign('user_id')
             ->references('id')->on('users')->onDelete('cascade'); 
