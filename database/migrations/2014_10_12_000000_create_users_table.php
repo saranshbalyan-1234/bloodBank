@@ -79,6 +79,7 @@ class CreateUsersTable extends Migration
             $table->string('role')->nullable();
             $table->string('password')->nullable();
             $table->string('blocked')->nullable();
+            $table->text('fcm_token')->nullable();
 
             $table->tinyInteger('is_donor_active')->nullable();
             $table->tinyInteger('is_volunteer_active')->nullable();
