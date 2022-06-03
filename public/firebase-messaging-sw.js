@@ -8,13 +8,13 @@ importScripts("https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js");
 Initialize the Firebase app in the service worker by passing in the messagingSenderId.
 */
 firebase.initializeApp({
-    apiKey: "AIzaSyCnruMzO5bGiOH72KX5rCjvr1fVt7qnzTs",
-    authDomain: "blood-bank-afc9f.firebaseapp.com",
-    projectId: "blood-bank-afc9f",
-    storageBucket: "blood-bank-afc9f.appspot.com",
-    messagingSenderId: "806220075411",
-    appId: "1:806220075411:web:a97259edf9d78c19621866",
-    measurementId: "G-YRE07K5ESJ",
+    apiKey: "AIzaSyCl_y7qG8kdmtzHYGetnwSvB_3FQ93H-8E",
+  authDomain: "bloodbankreact.firebaseapp.com",
+  projectId: "bloodbankreact",
+  storageBucket: "bloodbankreact.appspot.com",
+  messagingSenderId: "32835006686",
+  appId: "1:32835006686:web:07056729def0dc9642124f",
+  measurementId: "G-DSKW8WVN9K"
 });
 
 // Retrieve an instance of Firebase Messaging so that it can handle background

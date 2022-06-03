@@ -281,6 +281,41 @@ public function verifyData(Request $req){
   return User::where($temp->toArray())->get();
 }
 
+public function sendNotification(Request $request)
+{
+    // $firebaseToken = User::whereNotNull('fcm_token')->pluck('fcm_token')->all();
+    // return $firebaseToken;
+      
+    $SERVER_API_KEY = 'AAAAB6UecN4:APA91bF6NRdrjsLzvNGmp71gDUHPhJLpTkKM5-tI9FfosPhgOca9zV1rwrz_L8rZr4nylJBiOUIkFBYJD3fLF3is2kdFqCT0CC_IRcTBZ26CUoLbOSOOu96BeNsRqQNhXc4sM7ETrQwN';
+
+    $data = [
+        "registration_ids" => [$request->ftoken],
+        "notification" => [
+            "title" => $request->title,
+            "body" => $request->body,  
+        ]
+    ];
+    $dataString = json_encode($data);
+
+    $headers = [
+        'Authorization: key=' . $SERVER_API_KEY,
+        'Content-Type: application/json',
+    ];
+
+    $ch = curl_init();
+  
+    curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
+           
+    $response = curl_exec($ch);
+
+    dd($response);
+}
+
 
 
 }

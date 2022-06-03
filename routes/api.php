@@ -36,9 +36,7 @@ use App\Http\Controllers\FirebaseNotificationController;
 */
 
 //firebase notification
-Route::post('/push-notificaiton', [FirebaseNotificationController::class, 'index']);
-Route::post('/store-token', [FirebaseNotificationController::class, 'storeToken']);
-Route::post('/send-notification', [FirebaseNotificationController::class, 'sendNotification']);
+Route::post('/send-notification', [UsersController::class, 'sendNotification']);
 
 //SupportDemoroutes
 Route::post('/addsupport',[SupportController::class,'store']);
