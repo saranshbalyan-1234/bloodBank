@@ -20,15 +20,11 @@ class NotificationController extends Controller
     function getAllNotification(){
         $unread_notification_count=0;
         $total_notification_count=0;
-        $notification= Notification::withExists('read')->get();
-        foreach ($notification as $no) {
-          if($no->read_exists==false) $unread_notification_count++;
-          $total_notification_count++;
-            }
-        return response()->json(['notificationData' => $notification,'unread_notification_count'=>$unread_notification_count,'total_notification_count'=>$total_notification_count,"status"=>"success"]);
-    }
-    function getAllNotificationAdmin(){
         $notification= Notification::all();
+        return $notification;
+    }
+    function getAllNotificationAdmin(Request $req){
+        $notification= Notification::where(['user_id' =>$req->user_id]);
         return response()->json(['notificationData' => $notification,"status"=>"success"]);
     }
     function getNotificationById(NotificationRequest $req){
