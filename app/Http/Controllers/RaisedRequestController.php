@@ -55,6 +55,7 @@ class RaisedRequestController extends Controller
     function updateTwo(Request $req){
         $request = RaisedRequest::where(['donor_id' => $req->donor_id,'requester_id' => $req->requester_id])->first();
         $request->status=$req->status;
+        $request->red=$req->red;
         $request->save();
         return response()->json(['updatedData' => $request,"status"=>"success"]);
     }
