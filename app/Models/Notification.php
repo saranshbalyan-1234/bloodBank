@@ -11,7 +11,7 @@ class Notification extends Model
     use HasFactory;
     protected $table='notification';
     protected $fillable = [
-     'title','description'
+     'status','description','user_id'
     ];
     public function read()
     {
