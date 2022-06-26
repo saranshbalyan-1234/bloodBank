@@ -26,7 +26,6 @@ class RaisedRequestController extends Controller
             $raised =new RaisedRequest();
             $raised->requester_id = $request->requester_id;
             $raised->donor_id = $id;
-            $raised->red = $request->red;
             $raised->status = $request->status;
             $raised->remark = $request->remark;
             $raised->save();
