@@ -13,6 +13,7 @@ class RaisedRequest extends Model
         'requester_id',
         'donor_id',
         'status',
+        'red',
         'donated',
         'remark'
     ];
