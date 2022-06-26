@@ -17,5 +17,12 @@ class RaisedRequest extends Model
         'donated',
         'remark'
     ];
- 
+  public function donor()
+    {
+        return $this->hasOne(User::class,'id','donor_id');
+    }
+     public function requester()
+    {
+        return $this->hasOne(User::class,'id','requester_id');
+    }
 }

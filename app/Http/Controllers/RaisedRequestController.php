@@ -19,6 +19,12 @@ class RaisedRequestController extends Controller
         return $temp;
 
     }  
+      public function getAllNotification()
+    {
+        $data = RaisedRequest::with('donor','requester')->get();
+        return $data;
+
+    }  
 
     function store(Request $request)
     {

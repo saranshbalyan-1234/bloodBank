@@ -63,6 +63,7 @@ Route::post('/getQueryByUser',[QueryController::class,'getQueryByUser']);
 
 
 Route::get('raisedlist',[RaisedRequestController::class,'index']);//search by id
+Route::get('getAllNotification',[RaisedRequestController::class,'getAllNotification']);//notification
 Route::post('/addraisedrequest',[RaisedRequestController::class,'store']);
 Route::post('/updateraisedrequest',[RaisedRequestController::class,'update']);
 Route::post('/updateraisedrequest2',[RaisedRequestController::class,'updateTwo']);
@@ -130,7 +131,7 @@ Route::post('/getFeedById',[FeedController::class,'getFeedById']);
                    Route::post('/findDonorss',[UsersController::class,'findDonorss']);
     Route::post('/addNotification',[NotificationController::class,'addNotification']);
     Route::post('/updateNotification',[NotificationController::class,'updateNotification']);
-    Route::post('/getAllNotification',[NotificationController::class,'getAllNotification']);
+    // Route::post('/getAllNotification',[NotificationController::class,'getAllNotification']);
     Route::post('/getNotificationById',[NotificationController::class,'getNotificationById']);
     Route::post('/readNotification',[UserNotificationController::class,'readNotification']);
     Route::post('/getAllNotificationAdmin',[NotificationController::class,'getAllNotificationAdmin']);
