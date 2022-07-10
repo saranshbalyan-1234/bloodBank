@@ -41,6 +41,7 @@ class RaisedRequestController extends Controller
         return response()->json(
             [
                 'message'=> 'raised requested',
+                'status'=>'success',
               
             ]
             );
